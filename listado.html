@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>Genermasa</title>
+    <link rel="canonical">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="robots" content="index, follow, noimageindex">
+    <meta name="author" content="Asora">
+    <meta name="description">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="global/css/bootstrap.min.css">
+    <link rel="stylesheet" href="global/css/bootstrap-extend.min.css">
+    <link rel="stylesheet" href="assets/css/site.min.css">
+    <link rel="stylesheet" href="global/vendor/animsition/animsition.css">
+    <link rel="stylesheet" href="global/vendor/asscrollable/asScrollable.css">
+    <link rel="stylesheet" href="global/vendor/switchery/switchery.css">
+    <link rel="stylesheet" href="global/vendor/slidepanel/slidePanel.css">
+    <link rel="stylesheet" href="global/vendor/flag-icon-css/flag-icon.css">
+    <link rel="stylesheet" href="global/fonts/material-design/material-design.css">
+    <script src="global/vendor/breakpoints/breakpoints.js"></script>
+    <script src="global/vendor/jquery/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="global/fonts/web-icons/web-icons.min.css">
+    <link rel="stylesheet" href="global/fonts/brand-icons/brand-icons.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
+  </head>
+  <body style="background-color:#F1F4F5;">
+    <!-- Content Section-->
+    <div style="margin-bottom:3%;z-index:3000;">
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header"><a class="navbar-brand" href="javascript:void(0)"><img src="assets/images/logo.svg" alt="Brand" height="30"></a><a class="navbar-brand" href="javascript:void(0)">Genermasa</a></div>
+          <!--div.navbar-collapse.navbar-collapse-toolbar.collapse(aria-expanded='false')
+          //ul.nav.navbar-toolbar.navbar-right.navbar-toolbar-right
+            //li.nav-item.dropdown
+              //a.nav-link(data-toggle='dropdown', href='javascript:void(0)', title='Notifications', aria-expanded='false', data-animation='slide-bottom', role='button')
+                //i.icon.md-search(aria-hidden='true')
+            //li.nav-item.dropdown
+              //a.nav-link(data-toggle='dropdown', href='javascript:void(0)', title='Notifications', aria-expanded='false', data-animation='slide-bottom', role='button')
+                //i.icon.md-view-headline(aria-hidden='true')
+          -->
+        </div>
+      </nav>
+      <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation" style="margin-top:4.715rem;z-index:2000;background-color:#016241;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <!--a.navbar-brand(href='javascript:void(0)')//img(src='assets/images/logo.svg', alt='Brand', height='30')
+            -->
+            <!--a.navbar-brand(href='javascript:void(0)') Genermasa-->
+          </div>
+          <div class="navbar-collapse navbar-collapse-toolbar collapse" aria-expanded="false">
+            <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+              <li class="nav-item dropdown"><a class="nav-link" href="graphCards.html"><i class="icon md-card-sd" aria-hidden="true" title="Guardar"></i></a></li>
+              <li class="nav-item dropdown"><a class="nav-link" href="javascript:void(0)" title="Editar" aria-expanded="false"><i class="icon md-edit" aria-hidden="true"></i></a></li>
+              <li class="nav-item dropdown"><a class="nav-link" href="#" title="Horas" aria-expanded="false">Nuevo Proyecto <i class="icon md-plus" aria-hidden="true"></i></a></li>
+              <li class="nav-item dropdown"><a class="nav-link" href="javascript:void(0)" title="Gasto" aria-expanded="false">Registrar gasto <i class="icon md-money-box" aria-hidden="true"></i></a></li>
+              <li class="nav-item dropdown"><a class="nav-link" href="#" title="Horas" aria-expanded="false">Registrar horas <i class="icon md-hourglass-alt" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10 offset-md-1 col-xs-12">
+          <div class="card" style="margin-top:5%;box-shadow:0px 1px 5px #888888;">
+            <div class="nav-tabs-vertical card-block" data-plugin="tabs">
+              <ul class="nav nav-tabs nav-tabs-line mr-25" role="tablist" style="margin-top:6%;">
+                <li class="nav-item" role="presentation" style="margin-right:20px !important;">
+                  <label>
+                    <input type="checkbox" style="margin-right:10px !important;"/>
+                  </label>Unidad de Verificación
+                </li>
+                <li class="nav-item" role="presentation">
+                  <label>
+                    <input type="checkbox" style="margin-right:10px !important;"/>
+                  </label>Proyectos Ambientales
+                </li>
+                <li class="nav-item" role="presentation">
+                  <label>
+                    <input type="checkbox" style="margin-right:10px !important;"/>
+                  </label>Proyectos Especiales
+                </li>
+                <li class="nav-item" role="presentation">
+                  <label>
+                    <input type="checkbox" style="margin-right:10px !important;"/>
+                  </label>Suelo
+                </li>
+                <li class="nav-item" role="presentation">
+                  <label>
+                    <input type="checkbox" style="margin-right:10px !important;"/>
+                  </label>Inogen
+                </li>
+                <li class="nav-item" role="presentation">
+                  <label>
+                    <input type="checkbox" style="margin-right:10px !important;"/>
+                  </label>Ovvalo
+                </li>
+              </ul>
+              <div class="tab-content py-15">
+                <div class="tab-pane active" id="exampleTabsLineLeftOne" role="tabpanel">
+                  <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                      <h1>Proyectos</h1>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="input-search">
+                        <button class="input-search-btn" type="submit"><i class="icon md-search" aria-hidden="true"></i></button>
+                        <input class="form-control" type="text" name="" placeholder="Buscar..."/>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="card" style="margin:5%;box-shadow:0px 1px 5px #888888;">
+                            <div class="card-block">
+                              <div style="text-align:center;">
+                                <h4 class="card-title">Proyecto de Verificación</h4>
+                                <h4>Unidad de Verificación</h4>
+                              </div>
+                              <div class="example" style="vertical-align:middle;text-align:center;"><img src="assets/images/verify.png" alt="alt" height="84" width="84"/></div>
+                            </div>
+                            <div class="card-footer card-footer-transparent card-footer-bordered text-muted" style="display:flex;align-items:baseline;flex-direction:row-reverse;"><a class="nav-link" style="color:#757575;margin-left:3%;" data-toggle="dropdown" href="javascript:void(0)" title="Notifications" aria-expanded="false" data-animation="slide-bottom" role="button"><i class="icon md-view-headline"></i></a><a class="nav-link" href="#">
+                                <h4>Ver</h4></a></div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="card" style="margin:5%;box-shadow:0px 1px 5px #888888;">
+                            <div class="card-block">
+                              <div style="text-align:center;">
+                                <h4 class="card-title">Proyecto Ambientale</h4>
+                                <h4>Proyectos Ambientales</h4>
+                              </div>
+                              <div class="example" style="vertical-align:middle;text-align:center;"><img src="assets/images/ambiental.png" alt="alt" height="84" width="84"/></div>
+                            </div>
+                            <div class="card-footer card-footer-transparent card-footer-bordered text-muted" style="display:flex;align-items:baseline;flex-direction:row-reverse;"><a class="nav-link" style="color:#757575;margin-left:3%;" data-toggle="dropdown" href="javascript:void(0)" title="Notifications" aria-expanded="false" data-animation="slide-bottom" role="button"><i class="icon md-view-headline"></i></a><a class="nav-link" href="#">
+                                <h4>Ver</h4></a></div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="card" style="margin:5%;box-shadow:0px 1px 5px #888888;">
+                            <div class="card-block">
+                              <div style="text-align:center;">
+                                <h4 class="card-title">Proyecto Especiale</h4>
+                                <h4>Proyectos Especiales</h4>
+                              </div>
+                              <div class="example" style="vertical-align:middle;text-align:center;"><img src="assets/images/special.png" alt="alt" height="84" width="84"/></div>
+                            </div>
+                            <div class="card-footer card-footer-transparent card-footer-bordered text-muted" style="display:flex;align-items:baseline;flex-direction:row-reverse;"><a class="nav-link" style="color:#757575;margin-left:3%;" data-toggle="dropdown" href="javascript:void(0)" title="Notifications" aria-expanded="false" data-animation="slide-bottom" role="button"><i class="icon md-view-headline"></i></a><a class="nav-link" href="#">
+                                <h4>Ver</h4></a></div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="card" style="margin:5%;box-shadow:0px 1px 5px #888888;">
+                            <div class="card-block">
+                              <div style="text-align:center;">
+                                <h4 class="card-title">Proyecto de Suelo</h4>
+                                <h4>Suelo</h4>
+                              </div>
+                              <div class="example" style="vertical-align:middle;text-align:center;"><img src="assets/images/rock.png" alt="alt" height="84" width="84"/></div>
+                            </div>
+                            <div class="card-footer card-footer-transparent card-footer-bordered text-muted" style="display:flex;align-items:baseline;flex-direction:row-reverse;"><a class="nav-link" style="color:#757575;margin-left:3%;" data-toggle="dropdown" href="javascript:void(0)" title="Notifications" aria-expanded="false" data-animation="slide-bottom" role="button"><i class="icon md-view-headline"></i></a><a class="nav-link" href="#">
+                                <h4>Ver</h4></a></div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="card" style="margin:5%;box-shadow:0px 1px 5px #888888;">
+                            <div class="card-block">
+                              <div style="text-align:center;">
+                                <h4 class="card-title">Proyecto de Inogen</h4>
+                                <h4>Inogen</h4>
+                              </div>
+                              <div class="example" style="vertical-align:middle;text-align:center;"><img src="assets/images/inogen.png" alt="alt" height="84" width="84"/></div>
+                            </div>
+                            <div class="card-footer card-footer-transparent card-footer-bordered text-muted" style="display:flex;align-items:baseline;flex-direction:row-reverse;"><a class="nav-link" style="color:#757575;margin-left:3%;" data-toggle="dropdown" href="javascript:void(0)" title="Notifications" aria-expanded="false" data-animation="slide-bottom" role="button"><i class="icon md-view-headline"></i></a><a class="nav-link" href="#">
+                                <h4>Ver</h4></a></div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="card" style="margin:5%;box-shadow:0px 1px 5px #888888;">
+                            <div class="card-block">
+                              <div style="text-align:center;">
+                                <h4 class="card-title">Proyecto de Ovvalo</h4>
+                                <h4>Ovvalo</h4>
+                              </div>
+                              <div class="example" style="vertical-align:middle;text-align:center;"><img src="assets/images/ovvalo.jpg" alt="alt" height="84" width="84"/></div>
+                            </div>
+                            <div class="card-footer card-footer-transparent card-footer-bordered text-muted" style="display:flex;align-items:baseline;flex-direction:row-reverse;"><a class="nav-link" style="color:#757575;margin-left:3%;" data-toggle="dropdown" href="javascript:void(0)" title="Notifications" aria-expanded="false" data-animation="slide-bottom" role="button"><i class="icon md-view-headline"></i></a><a class="nav-link" href="#">
+                                <h4>Ver</h4></a></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="nav text-xs-center" style="justify-content:center;">
+                        <ul class="pagination">
+                          <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                          <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+                          <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+                          <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                          <li class="page-item"><a class="page-link" href="javascript:void(0)">4</a></li>
+                          <li class="page-item"><a class="page-link" href="javascript:void(0)">5</a></li>
+                          <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Neccesary scripts section-->
+    <script src="global/vendor/babel-external-helpers/babel-external-helpers.js"></script>
+    <script src="global/vendor/tether/tether.js"></script>
+    <script src="global/vendor/bootstrap/bootstrap.js"></script>
+    <script src="global/vendor/animsition/animsition.js"></script>
+    <script src="global/vendor/mousewheel/jquery.mousewheel.js"></script>
+    <script src="global/vendor/asscrollbar/jquery-asScrollbar.js"></script>
+    <script src="global/vendor/asscrollable/jquery-asScrollable.js"></script>
+    <script src="global/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+    <script src="global/vendor/screenfull/screenfull.js"></script>
+    <script src="global/vendor/slidepanel/jquery-slidePanel.js"></script>
+    <script src="global/js/State.js"></script>
+    <script src="global/js/Component.js"></script>
+    <script src="global/js/Plugin.js"></script>
+    <script src="global/js/Base.js"></script>
+    <script src="global/js/Config.js"></script>
+    <script src="assets/js/Section/Menubar.js"></script>
+    <script src="assets/js/Section/GridMenu.js"></script>
+    <script src="assets/js/Section/Sidebar.js"></script>
+    <script src="assets/js/Section/PageAside.js"></script>
+    <script src="assets/js/Plugin/menu.js"></script>
+    <script src="global/js/config/colors.js"></script>
+    <script>
+      Config.set('assets', 'assets');
+      
+      
+    </script>
+  </body>
+</html>

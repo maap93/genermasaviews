@@ -1,0 +1,313 @@
+extends ./layout.jade
+
+block additional_styles
+  link(rel='stylesheet', href='global/vendor/bootstrap-datepicker/bootstrap-datepicker.css')
+
+
+block additional_scripts
+  script(src='global/vendor/bootstrap-datepicker/bootstrap-datepicker.js')
+  script(src='global/js/Plugin/bootstrap-datepicker.js')
+
+
+mixin complicatedForm()
+  div.card(style={'margin-top':'5%', 'box-shadow': '0px 1px 5px #888888'})
+    div.nav-tabs-vertical(data-plugin='tabs').card-block
+      ul.nav.nav-tabs.nav-tabs-line.mr-25(role='tablist')
+        li.nav-item(role='presentation')
+          a.nav-link.active(data-toggle='tab', href='#exampleTabsLineLeftOne', aria-controls='exampleTabsLineLeftOne', role='tab') Datos Generales
+        li.nav-item(role='presentation')
+          a.nav-link(data-toggle='tab', href='#exampleTabsLineLeftTwo', aria-controls='exampleTabsLineLeftTwo', role='tab') Contacto Administrativo
+        li.nav-item(role='presentation')
+          a.nav-link(data-toggle='tab', href='#exampleTabsLineLeftThree', aria-controls='exampleTabsLineLeftThree', role='tab') Datos de Facturación
+        li.nav-item(role='presentation')
+          a.nav-link(data-toggle='tab', href='#exampleTabsLineLeftFour', aria-controls='exampleTabsLineLeftFour', role='tab') Equipo de Trabajo
+        //li.nav-item(role='presentation')
+          //a.nav-link(data-toggle='tab', href='#exampleTabsLineLeftFifth', aria-controls='exampleTabsLineLeftFifth', role='tab') Gasto Fijo
+        li.nav-item(role='presentation')
+          a.nav-link(data-toggle='tab', href='#exampleTabsLineLeftSixth', aria-controls='exampleTabsLineLeftSixth', role='tab') Gasto Directo
+        //li.nav-item(role='presentation')
+          //a.nav-link(data-toggle='tab', href='#exampleTabsLineLeftSeven', aria-controls='exampleTabsLineLeftSeven', role='tab') Gastos Adicionales
+        li.nav-item(role='presentation')   
+      div.tab-content.py-15
+        div#exampleTabsLineLeftOne.tab-pane.active(role='tabpanel')
+          div.row
+            div.col-md-12.col-xs-12
+              h1 Datos Generales
+            div.col-md-12.form-group
+              select.form-control(style={'margin-bottom': '1%'})
+                option(value="UV") Unidad de Verificación (Auditorias) 
+                option(value="PA") Proyectos Ambientales
+                option(value="PE") Proyectos Especiales
+                option(value="SU") Suelo
+                option(value="IN") Inogen
+                option(value="OVV") Ovvalo
+              input.form-control(type='text', placeholder='Cliente/Empresa', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='Giro de la Empresa', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='Concepto', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='Lugar de realización', style={'margin-bottom': '1%'})
+              div.example
+                div.input-daterange(data-plugin='datepicker')
+                  div.input-group
+                    span.input-group-addon
+                      i.icon.md-calendar(aria-hidden='true')
+                    input.form-control(type='text', id="startDate", name='start', placeholder="Fecha de Inicio", data-plugin='datepicker')
+                  div.input-group
+                    span.input-group-addon
+                      i.icon.md-calendar(aria-hidden='true')
+                    input.form-control(type='text', id="endDate", name='end', placeholder="Fecha de Fin")
+              textarea#textareaDefault.form-control(rows='5', placeholder="Comentarios", style={'margin-bottom': '1%'})
+        div#exampleTabsLineLeftTwo.tab-pane(role='tabpanel')
+          div.row
+            div.col-md-12.col-xs-12
+              h1 Contacto Administrativo
+            div.col-md-12.form-group
+              input.form-control(type='text', placeholder='Nombre de Contacto', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='Puesto', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='Dirección', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='Teléfono de Oficina', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='Teléfono Celular', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='E-mail', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='Usuario de Skype', style={'margin-bottom': '1%'})
+              textarea#textareaDefault.form-control(rows='5', placeholder="Información Adicional", style={'margin-bottom': '1%'})
+        div#exampleTabsLineLeftThree.tab-pane(role='tabpanel')
+          div.row
+            div.col-md-12.col-xs-12
+              h1 Datos de Facturación
+            div.col-md-12.form-group
+              input.form-control(type='text', placeholder='Razón Social', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='Dirección', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='R.F.C', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='Teléfono', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='E-mail', style={'margin-bottom': '1%'})
+              input.form-control(type='text', placeholder='Orden de Compra/No. de Contrato', style={'margin-bottom': '1%'})
+              div.input-group(style={'margin-bottom': '1%'})
+                span.input-group-addon
+                  i.icon.md-calendar(aria-hidden='true')
+                input.form-control(type='text',id="fechaOrdenCompra", data-plugin='datepicker', placeholder="Fecha de Orden de Compra/Contrato")
+              div.input-group(style={'margin-bottom': '1%'})
+                span.input-group-addon
+                  i.icon.md-calendar(aria-hidden='true')
+                input.form-control(type='text',id="fechaFacturacion", data-plugin='datepicker', placeholder="Fecha de Facturación")
+              input.form-control(type='text', placeholder='Concepto de Facturación', style={'margin-bottom': '1%'})
+              textarea#textareaDefault.form-control(rows='5', placeholder="Instrucciones de Facturación", style={'margin-bottom': '1%'})
+        div#exampleTabsLineLeftFour.tab-pane(role='tabpanel')
+          div.row
+            div.col-md-12.col-xs-12
+              h1 Equipo de Trabajo
+            div.col-md-12.form-group
+              div.form-group
+                div.input-search
+                  button.input-search-btn(type='submit')
+                    i.icon.md-search(aria-hidden='true')
+                  input.form-control(type='text', name='', placeholder='Buscar...')
+            div.col-md-12
+              table.table.table-hover(style={ 'padding-bottom': '5%' })
+                thead
+                  tr
+                    th.w-50 #
+                    th Nombre Completo
+                    th Puesto
+                    th.w-200 Acciones
+                tbody.table-section(data-plugin='tableSection')
+                  tr
+                    td.text-center 1001
+                    td.font-weight-medium Bryan Adams
+                    td(style={'font-weight': 'bold'}) Líder del proyecto
+                    td.hidden-sm-down
+                      div.btn-group(role='group')
+                        button#exampleIconDropdown1.btn.btn-primary.dropdown-toggle.waves-effect.waves-classic(type='button', data-toggle='dropdown', aria-expanded='false')
+                          i.icon.md-accounts-list-alt(aria-hidden='true')
+                        div.dropdown-menu(aria-labelledby='exampleIconDropdown1', role='menu')
+                          a.dropdown-item.disabled(href='#', role='menuitem') Líder de proyecto
+                          a.dropdown-item(href='#', role='menuitem') Ingeniero
+                          a.dropdown-item(href='#', role='menuitem') Miembro
+                        button.btn.btn-danger.waves-effect.waves-classic(type='button') #[i.icon.md-delete]
+                  tr
+                    td.text-center 1002
+                    td.font-weight-medium Fernando Villers
+                    td Ingeniero
+                    td.hidden-sm-down
+                      div.btn-group(role='group')
+                        button#exampleIconDropdown1.btn.btn-primary.dropdown-toggle.waves-effect.waves-classic(type='button', data-toggle='dropdown', aria-expanded='false')
+                          i.icon.md-accounts-list-alt(aria-hidden='true')
+                        div.dropdown-menu(aria-labelledby='exampleIconDropdown1', role='menu')
+                          a.dropdown-item(href='#', role='menuitem') Líder de proyecto
+                          a.dropdown-item.disabled(href='#', role='menuitem') Ingeniero
+                          a.dropdown-item(href='#', role='menuitem') Miembro
+                        button.btn.btn-danger.waves-effect.waves-classic(type='button') #[i.icon.md-delete]
+                  tr
+                    td.text-center 1042
+                    td.font-weight-medium Diana Carolina Dueñas
+                    td Miembro
+                    td.hidden-sm-down
+                      div.btn-group(role='group')
+                        button#exampleIconDropdown1.btn.btn-primary.dropdown-toggle.waves-effect.waves-classic(type='button', data-toggle='dropdown', aria-expanded='false')
+                          i.icon.md-accounts-list-alt(aria-hidden='true')
+                        div.dropdown-menu(aria-labelledby='exampleIconDropdown1', role='menu')
+                          a.dropdown-item(href='#', role='menuitem') Líder de proyecto
+                          a.dropdown-item(href='#', role='menuitem') Ingeniero
+                          a.dropdown-item.disabled(href='#', role='menuitem') Miembro
+                        button.btn.btn-danger.waves-effect.waves-classic(type='button') #[i.icon.md-delete]
+
+            
+        div#exampleTabsLineLeftFifth.tab-pane(role='tabpanel')
+          div.row
+            div.col-md-12.col-xs-12
+              h1 Gastos Fijos
+            div.col-md-12.form-group
+              input(type='number', name='quantity', min='1', max='5', placeholder='Costos Operativos', style={'margin-bottom': '1%'}).form-control
+              input(type='number', name='quantity', min='1', max='5', placeholder='Extra 1', style={'margin-bottom': '1%'}).form-control
+              input(type='number', name='quantity', min='1', max='5', placeholder='Extra 2', style={'margin-bottom': '1%'}).form-control
+              input(type='number',disabled, name='quantity', min='1', max='5', placeholder='Total', style={'margin-bottom': '1%'}).form-control
+              input(type='number', name='quantity', min='1', max='100', placeholder='Porcentaje de Utilidad', style={'margin-bottom': '1%'}).form-control
+
+        div#exampleTabsLineLeftSixth.tab-pane(role='tabpanel')
+          div.row
+            div.col-md-12.col-xs-12
+              h1 Gasto Directo
+            div.col-md-12
+              h3  Viáticos
+              table.table.table-hover(style={ 'padding-bottom': '5%' })
+                thead
+                  tr
+                    th.w-50 #
+                    th Concepto General
+                    th Concepto Específico
+                    th.w-200 Detalle
+                    th.w-200 Importe
+                    th.w-200 I.V.A
+                    th.w-200 Total
+                tbody.table-section(data-plugin='tableSection')
+                  tr
+                    td.text-center 1001
+                    td
+                      select.form-control(style={'margin-bottom': '1%'})
+                        option(value="UV") Unidad de Verificación (Auditorias) 
+                        option(value="PA") Proyectos Ambientales
+                        option(value="PE") Proyectos Especiales
+                        option(value="SU") Suelo
+                        option(value="IN") Inogen
+                        option(value="OVV") Ovvalo
+                    td
+                      select.form-control(style={'margin-bottom': '1%'})
+                        option(value="UV") Unidad de Verificación (Auditorias) 
+                        option(value="PA") Proyectos Ambientales
+                        option(value="PE") Proyectos Especiales
+                        option(value="SU") Suelo
+                        option(value="IN") Inogen
+                        option(value="OVV") Ovvalo
+                    td
+                      input(type='text', name='details', style={'margin-bottom': '1%'}).form-control
+                    td
+                      input(type='number', name='quantity', min='1', max='5', placeholder='$500.00', style={'margin-bottom': '1%'}).form-control
+                    td
+                      input(type='number', name='quantity', min='1', max='5', placeholder='$324.00', style={'margin-bottom': '1%'}).form-control
+                    td $384
+                  tr
+                    td.text-center 1001
+                    td
+                      select.form-control(style={'margin-bottom': '1%'})
+                        option(value="UV") Unidad de Verificación (Auditorias) 
+                        option(value="PA") Proyectos Ambientales
+                        option(value="PE") Proyectos Especiales
+                        option(value="SU") Suelo
+                        option(value="IN") Inogen
+                        option(value="OVV") Ovvalo
+                    td
+                      select.form-control(style={'margin-bottom': '1%'})
+                        option(value="UV") Unidad de Verificación (Auditorias) 
+                        option(value="PA") Proyectos Ambientales
+                        option(value="PE") Proyectos Especiales
+                        option(value="SU") Suelo
+                        option(value="IN") Inogen
+                        option(value="OVV") Ovvalo
+                    td
+                      input(type='text', name='details', style={'margin-bottom': '1%'}).form-control
+                    td
+                      input(type='number', name='quantity', min='1', max='5', placeholder='$500.00', style={'margin-bottom': '1%'}).form-control
+                    td
+                      input(type='number', name='quantity', min='1', max='5', placeholder='$324.00', style={'margin-bottom': '1%'}).form-control
+                    td $384
+                  tr
+                    td.text-center 1001
+                    td
+                      select.form-control(style={'margin-bottom': '1%'})
+                        option(value="UV") Unidad de Verificación (Auditorias) 
+                        option(value="PA") Proyectos Ambientales
+                        option(value="PE") Proyectos Especiales
+                        option(value="SU") Suelo
+                        option(value="IN") Inogen
+                        option(value="OVV") Ovvalo
+                    td
+                      select.form-control(style={'margin-bottom': '1%'})
+                        option(value="UV") Unidad de Verificación (Auditorias) 
+                        option(value="PA") Proyectos Ambientales
+                        option(value="PE") Proyectos Especiales
+                        option(value="SU") Suelo
+                        option(value="IN") Inogen
+                        option(value="OVV") Ovvalo
+                    td
+                      input(type='text', name='details', style={'margin-bottom': '1%'}).form-control
+                    td
+                      input(type='number', name='quantity', min='1', max='5', placeholder='$500.00', style={'margin-bottom': '1%'}).form-control
+                    td
+                      input(type='number', name='quantity', min='1', max='5', placeholder='$324.00', style={'margin-bottom': '1%'}).form-control
+                    td $384
+                tfoot
+                  tr
+                    td(colspan='6', style={'font-weight': 'bold'}).text-right Total
+                    td $4852.36
+
+        //div#exampleTabsLineLeftSeven.tab-pane(role='tabpanel')
+          //div.row
+            //div.col-md-12.col-xs-12
+              //h1 Gastos Adicionales
+            //div.col-md-12
+              //table.table.table-hover(style={ 'padding-bottom': '5%' })
+                //thead
+                  //tr
+                    //th.w-50 #
+                    //th Concepto
+                    //th.w-200 Porcentaje
+                    //th.w-200 Total
+                //tbody.table-section(data-plugin='tableSection')
+                  //tr
+                    //td.text-center 1001
+                    //td
+                      //input.form-control(type='text', placeholder='Concepto', style={'margin-bottom': '1%'})
+                    //td
+                      //input(type='number', name='quantity', min='1', max='100', placeholder='16%', style={'margin-bottom': '1%'}).form-control
+                    //td $384
+                  //tr
+                    //td.text-center 1002
+                    //td
+                      //input.form-control(type='text', placeholder='Concepto', style={'margin-bottom': '1%'})
+                    //td
+                      //input(type='number', name='quantity', min='1', max='100', placeholder='16%', style={'margin-bottom': '1%'}).form-control
+                    //td $384
+                  //tr
+                    //td.text-center 1003
+                    //td
+                      //input.form-control(type='text', placeholder='Concepto', style={'margin-bottom': '1%'})
+                    //td
+                      //input(type='number', name='quantity', min='1', max='100', placeholder='16%', style={'margin-bottom': '1%'}).form-control
+                    //td $384
+                //tfoot
+                  //tr
+                    //td(colspan='3', style={'font-weight': 'bold'}).text-right Total
+                    //td $4852.36
+
+
+block content
+  include ./navbar.jade
+  div.container-fluid
+    div.row
+      div.col-md-10.offset-md-1.col-xs-12
+        +complicatedForm()
+  script.
+    $( function() {
+    $( "#startDate" ).datepicker();
+    $( "#fechaOrdenCompra" ).datepicker();
+    $( "#fechaFacturacion" ).datepicker();
+    $( "#endDate" ).datepicker();
+    } );

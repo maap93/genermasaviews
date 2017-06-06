@@ -1,0 +1,56 @@
+extends ./layout.jade
+
+block additional_styles
+  link(rel='stylesheet', href='global/vendor/dropify/dropify.css')
+  link(rel='stylesheet', href='global/vendor/bootstrap-datepicker/bootstrap-datepicker.css')
+  
+  
+block additional_scripts
+  script(src='global/vendor/bootstrap-datepicker/bootstrap-datepicker.js')
+  script(src='global/js/Plugin/bootstrap-datepicker.js')
+
+block content
+  include ./navbar.jade
+  div.container-fluid
+    div.row
+      div.col-md-8.offset-md-2.col-xs-12.card(style={'margin-top':'5%', 'box-shadow': '0px 1px 5px #888888', padding: '3%'})
+        form(action="#" method="method")
+          div.row.card-block
+            div.col-xs-12.col-md-12
+              h4.card-title(style={'text-align': 'center'}) Información del Proyecto
+            div.dropify-wrapper.col-md-6
+              div.dropify-message
+                span.file-icon
+                p Drag and drop a file here or click
+                p.dropify-error Ooops, something wrong appended.
+              div.dropify-loader
+              div.dropify-errors-container
+                ul
+              input#input-file-now(type='file', data-plugin='dropify', data-default-file='')
+              button.dropify-clear(type='button') Remove
+              div.dropify-preview
+                span.dropify-render
+                div.dropify-infos
+                  div.dropify-infos-inner
+                    p.dropify-filename
+                      span.file-icon
+                      span.dropify-filename-inner
+                    p.dropify-infos-message Drag and drop or click to replace
+            div.col-md-6.form-group
+              select.form-control(style={'margin-bottom': '1%', height: '20%'})
+                option Gastos Adicionales 
+                option Option 2
+                option Option 3
+              textarea#textareaDefault.form-control(rows='3', placeholder="Concepto", style={'margin-bottom': '1%'})
+              input(type='number', name='quantity', min='1', max='5', placeholder='$123', style={'margin-bottom': '1%'}).form-control
+              div.input-group
+                span.input-group-addon
+                  i.icon.md-calendar(aria-hidden='true')
+                input.form-control(type='text', id="date", data-plugin='datepicker')
+  script.
+    $( function() {
+    $( "#date" ).datepicker();
+    } );
+
+
+          

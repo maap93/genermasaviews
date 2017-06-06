@@ -1,0 +1,596 @@
+extends ./layout.jade
+
+block additional_styles
+  link(rel="stylesheet", href="css/style.css", attr)
+  link(rel='stylesheet', href='global/vendor/dropify/dropify.css')
+  link(rel='stylesheet', href='global/vendor/chartist/chartist.css')
+  link(rel='stylesheet', href='global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css')
+  link(rel='stylesheet', href='assets/examples/css/charts/chartist.css')
+  link(rel='stylesheet', href='global/vendor/bootstrap-datepicker/bootstrap-datepicker.css')
+
+block additional_scripts
+  script(src='global/vendor/chartist/chartist.js')
+  script(src='global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js')
+  script(src='global/vendor/bootstrap-datepicker/bootstrap-datepicker.js')
+  script(src='global/js/Plugin/bootstrap-datepicker.js')
+
+mixin header(projectTitle, projectType)
+  div.jumbotron(style={ margin:' 0 -0.9375rem'} )
+    div.backgroundSpecial
+      div.content
+        h1 #{projectTitle}
+        h4 #{projectType}
+        
+mixin generalInfo()
+  div.cardSpecial(style={'margin-top':'5%', 'margin-bottom': '5%' ,'box-shadow': '0px 1px 5px #888888', 'background-color': 'none !important'})
+    div.nav-tabs-horizontal.nav-tabs-inverse(data-plugin='tabs')
+      ul.nav.nav-tabs.nav-tabs-solid(role='tablist')
+        li.nav-item(role='presentation')
+          a.nav-link.active(data-toggle='tab', href='#exampleIconifiedTabsOne', aria-controls='exampleIconifiedTabsOne', role='tab', aria-expanded='true')
+            i.icon.md-home(aria-hidden='true')
+            |  General
+        li.nav-item(role='presentation')
+          a.nav-link(data-toggle='tab', href='#exampleIconifiedTabsTwo', aria-controls='exampleIconifiedTabsTwo', role='tab', aria-expanded='false')
+            i.icon.md-account-circle(aria-hidden='true')
+            |  Cliente
+        li.nav-item(role='presentation')
+          a.nav-link(data-toggle='tab', href='#exampleIconifiedTabsThree', aria-controls='exampleIconifiedTabsThree', role='tab', aria-expanded='false')
+            i.icon.md-accounts(aria-hidden='true')
+            |  Miembros
+      div.tab-content.pt-15
+        div#exampleIconifiedTabsOne.tab-pane.active(role='tabpanel', aria-expanded='true')
+          div.row
+            div.col-xs-12.col-md-12
+              h1 Datos Generales
+            div.col-md-5.col-xs-12.offset-md-1.form-group(style={'margin-top': '3%'})
+              p
+                b Tipo de Proyecto: 
+                input.form-control(type="text")
+              p
+                b Cliente/Empresa: 
+                input.form-control(type="text")
+              p
+                b Giro de la Empresa:
+                input.form-control(type="text")
+              p
+                b Lugar de Realización:
+                input.form-control(type="text")
+              p
+                b Fecha Inicio:
+                div.input-group(style={'margin-bottom': '1%'})
+                  span.input-group-addon
+                    i.icon.md-calendar(aria-hidden='true')
+                  input.form-control(type='text',id="fechaInicio", data-plugin='datepicker', placeholder="mm/dd/yyyy")
+              p
+                b Fecha de fin: 
+                div.input-group(style={'margin-bottom': '1%'})
+                  span.input-group-addon
+                    i.icon.md-calendar(aria-hidden='true')
+                  input.form-control(type='text',id="fechaFin", data-plugin='datepicker', placeholder="mm/dd/yyyy")
+            div.col-md-6.col-xs-12(style={'margin-top': '3%'})
+              p
+                b Comentarios
+                br
+                textarea#textareaDefault.form-control(rows='5', placeholder="Comentarios", style={'margin-bottom': '1%'})
+                div(style={float : 'right'})
+                  button.btn.btn-primary(type="submit") Guardar
+                  button.btn.btn-primary(type="submit") Cancelar
+        div#exampleIconifiedTabsTwo.tab-pane(role='tabpanel', aria-expanded='false')
+          div.row
+            div.col-xs-12.col-md-12
+              h1 Datos del Cliente
+            div.col-md-5.col-xs-12.offset-md-1
+              h3(style={'margin-top': '2%', 'margin-bottom': '5%'}) Datos Generales
+              p
+                b Nombre de Contacto:
+                input.form-control(type="text")
+              p
+                b Puesto: 
+                input.form-control(type="text")
+              p
+                b Dirección:
+                input.form-control(type="text")
+              p
+                b Teléfono de oficina:
+                input.form-control(type="text")
+              p
+                b Teléfono Celular: 
+                input.form-control(type="text")
+              p
+                b E-mail:
+                input.form-control(type="text")
+              p
+                b Usuario de Skype:
+                input.form-control(type="text")
+              p
+                b Informacion adicional:
+                textarea#textareaDefault.form-control(rows='5', placeholder="Comentarios", style={'margin-bottom': '1%'})
+            div.col-md-6.col-xs-12
+              h3(style={'margin-top': '2%', 'margin-bottom': '5%'}) Datos de Facturación
+              p
+                b Razón Social:
+                input.form-control(type="text")
+              p
+                b Dirección: 
+                input.form-control(type="text")
+              p
+                b R.F.C:
+                input.form-control(type="text")
+              p
+                b Teléfono:
+                input.form-control(type="text")
+              p
+                b E-mail
+                input.form-control(type="text")
+              p
+                b Orden de Compra/No. de Contrato: 
+                input.form-control(type="text")
+              p
+                b Fecha de orden de compra/contrato: 
+                div.input-group(style={'margin-bottom': '1%'})
+                  span.input-group-addon
+                    i.icon.md-calendar(aria-hidden='true')
+                  input.form-control(type='text',id="fechaCompra", data-plugin='datepicker', placeholder="mm/dd/yyyy")
+              p
+                b Fecha de Facturación: 
+                div.input-group(style={'margin-bottom': '1%'})
+                  span.input-group-addon
+                    i.icon.md-calendar(aria-hidden='true')
+                  input.form-control(type='text',id="fechaFactura", data-plugin='datepicker', placeholder="mm/dd/yyyy")
+              p
+                b Concepto de Facturación: 
+                input.form-control(type="text")
+              p
+                b Instrucciones de Facturación:
+                textarea#textareaDefault.form-control(rows='5', placeholder="Comentarios", style={'margin-bottom': '1%'})
+                div(style={float : 'right'})
+                  button.btn.btn-primary(type="submit") Guardar
+                  button.btn.btn-primary(type="submit") Cancelar
+        div#exampleIconifiedTabsThree.tab-pane(role='tabpanel', aria-expanded='false')
+          div.row
+            div.col-md-12.col-xs-12
+              h1 Equipo de Trabajo
+            div.col-md-12.form-group
+              div.form-group
+                div.input-search
+                  button.input-search-btn(type='submit')
+                    i.icon.md-search(aria-hidden='true')
+                  input.form-control(type='text', name='', placeholder='Buscar...')
+            div.col-md-12
+              table.table.table-hover(style={ 'padding-bottom': '5%' })
+                thead
+                  tr
+                    th.w-50 #
+                    th Nombre Completo
+                    th Puesto
+                    th.w-200 Acciones
+                tbody.table-section(data-plugin='tableSection')
+                  tr
+                    td.text-center 1001
+                    td.font-weight-medium Bryan Adams
+                    td(style={'font-weight': 'bold'}) Líder del proyecto
+                    td.hidden-sm-down
+                      div.btn-group(role='group')
+                        button#exampleIconDropdown1.btn.btn-primary.dropdown-toggle.waves-effect.waves-classic(type='button', data-toggle='dropdown', aria-expanded='false')
+                          i.icon.md-accounts-list-alt(aria-hidden='true')
+                        div.dropdown-menu(aria-labelledby='exampleIconDropdown1', role='menu')
+                          a.dropdown-item.disabled(href='#', role='menuitem') Líder de proyecto
+                          a.dropdown-item(href='#', role='menuitem') Ingeniero
+                          a.dropdown-item(href='#', role='menuitem') Miembro
+                        button.btn.btn-danger.waves-effect.waves-classic(type='button') #[i.icon.md-delete]
+                  tr
+                    td.text-center 1002
+                    td.font-weight-medium Fernando Villers
+                    td Ingeniero
+                    td.hidden-sm-down
+                      div.btn-group(role='group')
+                        button#exampleIconDropdown1.btn.btn-primary.dropdown-toggle.waves-effect.waves-classic(type='button', data-toggle='dropdown', aria-expanded='false')
+                          i.icon.md-accounts-list-alt(aria-hidden='true')
+                        div.dropdown-menu(aria-labelledby='exampleIconDropdown1', role='menu')
+                          a.dropdown-item(href='#', role='menuitem') Líder de proyecto
+                          a.dropdown-item.disabled(href='#', role='menuitem') Ingeniero
+                          a.dropdown-item(href='#', role='menuitem') Miembro
+                        button.btn.btn-danger.waves-effect.waves-classic(type='button') #[i.icon.md-delete]
+                  tr
+                    td.text-center 1042
+                    td.font-weight-medium Diana Carolina Dueñas
+                    td Miembro
+                    td.hidden-sm-down
+                      div.btn-group(role='group')
+                        button#exampleIconDropdown1.btn.btn-primary.dropdown-toggle.waves-effect.waves-classic(type='button', data-toggle='dropdown', aria-expanded='false')
+                          i.icon.md-accounts-list-alt(aria-hidden='true')
+                        div.dropdown-menu(aria-labelledby='exampleIconDropdown1', role='menu')
+                          a.dropdown-item(href='#', role='menuitem') Líder de proyecto
+                          a.dropdown-item(href='#', role='menuitem') Ingeniero
+                          a.dropdown-item.disabled(href='#', role='menuitem') Miembro
+                        button.btn.btn-danger.waves-effect.waves-classic(type='button') #[i.icon.md-delete]
+
+mixin graphNumbers()
+  div.cardSpecial(style={'margin-top':'5%', 'margin-bottom': '5%' ,'box-shadow': '0px 1px 5px #888888', 'background-color': 'none !important'})
+    div.nav-tabs-horizontal.nav-tabs-inverse(data-plugin='tabs')
+      ul.nav.nav-tabs.nav-tabs-solid(role='tablist')
+        li.nav-item(role='presentation')
+          a.nav-link.active(data-toggle='tab', href='#exampleIconifiedTabsOne1', aria-controls='exampleIconifiedTabsOne', role='tab', aria-expanded='true')
+            i.icon.md-money-box(aria-hidden='true')
+            |  Gastos
+        li.nav-item(role='presentation')
+          a.nav-link(data-toggle='tab', href='#exampleIconifiedTabsTwo2', aria-controls='exampleIconifiedTabsTwo', role='tab', aria-expanded='false')
+            i.icon.md-hourglass-alt(aria-hidden='true')
+            |  Horas
+      div.tab-content.pt-15
+        div#exampleIconifiedTabsOne1.tab-pane.active(role='tabpanel', aria-expanded='true')
+          div.row
+            div.col-xs-12.col-md-12
+              h1 Gastos
+              div(style={float : 'right'})
+                button(type='button', data-toggle='modal', data-target='#myModal').btn.btn-primary.waves-effect.waves-classic Agregar Gasto
+
+            //div.col-md-5.col-xs-12.offset-md-1(style={'margin-top': '3%'})
+              //p
+                //b Valor Presupuestado:
+                //|  $ 5000
+              //p
+                //b Gasto Total:
+                //|  $ 3500
+              //p
+                //b Porcentaje Utilizado:
+                //|  75%
+              //p
+                //b Prcentaje Disponible:
+                //|  25%
+            div.col-md-12.col-xs-12(style={'margin-top': '3%'})
+              div.example
+                div#exampleSimpleLine.ct-chart.ct-perfect-four
+                  svg.ct-chart-line(xmlns:ct='http://gionkunz.github.com/chartist-js/ct', width='100%', height='100%', style='width: 100%; height: 100%;')
+                    g.ct-grids
+                      line.ct-grid.ct-horizontal(x1='70', x2='70', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='172.44642857142856', x2='172.44642857142856', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='274.8928571428571', x2='274.8928571428571', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='377.3392857142857', x2='377.3392857142857', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='479.7857142857143', x2='479.7857142857143', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='582.2321428571429', x2='582.2321428571429', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='684.6785714285714', x2='684.6785714285714', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='787.125', x2='787.125', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='889.5714285714286', x2='889.5714285714286', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='992.0178571428571', x2='992.0178571428571', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='1094.4642857142858', x2='1094.4642857142858', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='1196.9107142857142', x2='1196.9107142857142', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='1299.357142857143', x2='1299.357142857143', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='1401.8035714285713', x2='1401.8035714285713', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='1504.25', x2='1504.25', y1='15', y2='245')
+                      line.ct-grid.ct-vertical(y1='245', y2='245', x1='70', x2='1504.25')
+                      line.ct-grid.ct-vertical(y1='199', y2='199', x1='70', x2='1504.25')
+                      line.ct-grid.ct-vertical(y1='153', y2='153', x1='70', x2='1504.25')
+                      line.ct-grid.ct-vertical(y1='107', y2='107', x1='70', x2='1504.25')
+                      line.ct-grid.ct-vertical(y1='61', y2='61', x1='70', x2='1504.25')
+                      line.ct-grid.ct-vertical(y1='15', y2='15', x1='70', x2='1504.25')
+                    g
+                      g.ct-series.ct-series-a(series-name='main')
+                        path.ct-area(d='M70,245L70,245C104.149,242.547,138.298,241.392,172.446,237.64C206.595,233.888,240.744,215.846,274.893,213.72C309.042,211.594,343.19,211.512,377.339,210.04C411.488,208.568,445.637,207.464,479.786,204.52C513.935,201.576,548.083,192.113,582.232,182.44C616.381,172.767,650.53,146.703,684.679,140.12C718.827,133.537,752.976,131.533,787.125,127.24L787.125,245Z')
+                        path.ct-line(d='M70,245C104.149,242.547,138.298,241.392,172.446,237.64C206.595,233.888,240.744,215.846,274.893,213.72C309.042,211.594,343.19,211.512,377.339,210.04C411.488,208.568,445.637,207.464,479.786,204.52C513.935,201.576,548.083,192.113,582.232,182.44C616.381,172.767,650.53,146.703,684.679,140.12C718.827,133.537,752.976,131.533,787.125,127.24')
+                      g.ct-series.ct-series-b(series-name='target')
+                        line.ct-point(x1='70', y1='61', x2='70.01', y2='61', value='100')
+                        line.ct-point(x1='172.44642857142856', y1='61', x2='172.45642857142855', y2='61', value='100')
+                        line.ct-point(x1='274.8928571428571', y1='61', x2='274.9028571428571', y2='61', value='100')
+                        line.ct-point(x1='377.3392857142857', y1='61', x2='377.3492857142857', y2='61', value='100')
+                        line.ct-point(x1='479.7857142857143', y1='61', x2='479.79571428571427', y2='61', value='100')
+                        line.ct-point(x1='582.2321428571429', y1='61', x2='582.2421428571429', y2='61', value='100')
+                        line.ct-point(x1='684.6785714285714', y1='61', x2='684.6885714285714', y2='61', value='100')
+                        line.ct-point(x1='787.125', y1='61', x2='787.135', y2='61', value='100')
+                        line.ct-point(x1='889.5714285714286', y1='61', x2='889.5814285714285', y2='61', value='100')
+                        line.ct-point(x1='992.0178571428571', y1='61', x2='992.0278571428571', y2='61', value='100')
+                        line.ct-point(x1='1094.4642857142858', y1='61', x2='1094.4742857142858', y2='61', value='100')
+                        line.ct-point(x1='1196.9107142857142', y1='61', x2='1196.9207142857142', y2='61', value='100')
+                        line.ct-point(x1='1299.357142857143', y1='61', x2='1299.3671428571429', y2='61', value='100')
+                        line.ct-point(x1='1401.8035714285713', y1='61', x2='1401.8135714285713', y2='61', value='100')
+                        line.ct-point(x1='1504.25', y1='61', x2='1504.26', y2='61', value='100')
+                    g.ct-labels
+                      foreignobject(style='overflow: visible;', x='70', y='250', width='102.44642857142857', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 01/01/2017
+                      foreignobject(style='overflow: visible;', x='172.44642857142856', y='250', width='102.44642857142857', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 03/01/2017
+                      foreignobject(style='overflow: visible;', x='274.8928571428571', y='250', width='102.44642857142858', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 14/01/2017
+                      foreignobject(style='overflow: visible;', x='377.3392857142857', y='250', width='102.44642857142856', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 15/01/2017
+                      foreignobject(style='overflow: visible;', x='479.7857142857143', y='250', width='102.44642857142861', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 19/01/2017
+                      foreignobject(style='overflow: visible;', x='582.2321428571429', y='250', width='102.44642857142856', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 22/01/2017
+                      foreignobject(style='overflow: visible;', x='684.6785714285714', y='250', width='102.44642857142856', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 26/01/2017
+                      foreignobject(style='overflow: visible;', x='787.125', y='250', width='102.44642857142856', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 27/10/2017
+                      foreignobject(style='overflow: visible;', x='889.5714285714286', y='250', width='102.44642857142856', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', x='992.0178571428571', y='250', width='102.44642857142867', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', x='1094.4642857142858', y='250', width='102.44642857142844', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', x='1196.9107142857142', y='250', width='102.44642857142867', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', x='1299.357142857143', y='250', width='102.44642857142844', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', x='1401.8035714285713', y='250', width='102.44642857142867', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', x='1504.25', y='250', width='30', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 30px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', y='199', x='10', height='46', width='50')
+                        span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 0.00%
+                      foreignobject(style='overflow: visible;', y='153', x='10', height='46', width='50')
+                        span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 25.00%
+                      foreignobject(style='overflow: visible;', y='107', x='10', height='46', width='50')
+                        span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 50.00%
+                      foreignobject(style='overflow: visible;', y='61', x='10', height='46', width='50')
+                        span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 75.00%
+                      foreignobject(style='overflow: visible;', y='15', x='10', height='46', width='50')
+                        span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 100.00%
+                      foreignobject(style='overflow: visible;', y='-15', x='10', height='30', width='50')
+                        span.ct-label.ct-vertical.ct-start(style='height: 30px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 125.00%
+
+            div.col-xs-12.col-md-12
+              div.example-wrap
+                div.example.table-responsive
+                  table.table.table-bordered
+                    thead
+                      tr
+                        th.w-50 #
+                        th Concepto General
+                        th Concepto Específico
+                        th.w-200 Detalle
+                        th.w-200 Importe
+                        th.w-200 I.V.A
+                        th.w-200 Total
+                    tbody
+                      tr
+                        td 001
+                        td Concepto
+                        td Específico
+                        td Detalle del gasto
+                        td $ 535
+                        td $ 25
+                        td $ 365
+                      tr
+                        td 002
+                        td Concepto
+                        td Específico
+                        td Detalle del gasto
+                        td $ 535
+                        td $ 25
+                        td $ 365
+                      tr
+                        td 003
+                        td Concepto
+                        td Específico
+                        td Detalle del gasto
+                        td $ 535
+                        td $ 25
+                        td $ 365
+                      tr
+                        td 004
+                        td Concepto
+                        td Específico
+                        td Detalle del gasto
+                        td $ 535
+                        td $ 25
+                        td $ 365
+                      tr
+                        td 005
+                        td Concepto
+                        td Específico
+                        td Detalle del gasto
+                        td $ 535
+                        td $ 25
+                        td $ 365
+                      tr
+                        td 006
+                        td Concepto
+                        td Específico
+                        td Detalle del gasto
+                        td $ 535
+                        td $ 25
+                        td $ 365
+                      tr
+                        td 007
+                        td Concepto
+                        td Específico
+                        td Detalle del gasto
+                        td $ 535
+                        td $ 25
+                        td $ 365
+                    tfoot
+                      tr
+                        td(colspan='6', style={'font-weight': 'bold'}).text-right Total
+                        td $4852.36
+              div.nav.text-xs-center(style={'justify-content': 'center'})
+                ul.pagination
+                  li.page-item
+                    a.page-link(href='javascript:void(0)', aria-label='Previous')
+                      span(aria-hidden='true') «
+                  li.page-item
+                    a.page-link(href='javascript:void(0)') 1
+                  li.page-item
+                    a.page-link(href='javascript:void(0)') 2
+                  li.page-item
+                    a.page-link(href='javascript:void(0)') 3
+                  li.page-item
+                    a.page-link(href='javascript:void(0)') 4
+                  li.page-item
+                    a.page-link(href='javascript:void(0)') 5
+                  li.page-item
+                    a.page-link(href='javascript:void(0)', aria-label='Next')
+                      span(aria-hidden='true') »
+
+               
+        div#exampleIconifiedTabsTwo2.tab-pane(role='tabpanel', aria-expanded='false')
+          div.row
+            div.col-xs-12.col-md-12
+              h1 Horas
+            //div.col-md-5.col-xs-12.offset-md-1(style={'margin-top': '3%'})
+              //p
+                //b Valor Presupuestado:
+                //|  $ 5000
+              //p
+                //b Gasto Total:
+                //|  $ 3500
+              //p
+                //b Porcentaje Utilizado:
+                //|  75%
+              //p
+                //b Prcentaje Disponible:
+                //|  25%
+            div.col-md-12.col-xs-12(style={'margin-top': '3%'})
+              div.example
+                div#exampleSimpleLine.ct-chart.ct-perfect-four
+                  svg.ct-chart-line(xmlns:ct='http://gionkunz.github.com/chartist-js/ct', width='100%', height='100%', style='width: 100%; height: 100%;')
+                    g.ct-grids
+                      line.ct-grid.ct-horizontal(x1='70', x2='70', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='172.44642857142856', x2='172.44642857142856', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='274.8928571428571', x2='274.8928571428571', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='377.3392857142857', x2='377.3392857142857', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='479.7857142857143', x2='479.7857142857143', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='582.2321428571429', x2='582.2321428571429', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='684.6785714285714', x2='684.6785714285714', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='787.125', x2='787.125', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='889.5714285714286', x2='889.5714285714286', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='992.0178571428571', x2='992.0178571428571', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='1094.4642857142858', x2='1094.4642857142858', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='1196.9107142857142', x2='1196.9107142857142', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='1299.357142857143', x2='1299.357142857143', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='1401.8035714285713', x2='1401.8035714285713', y1='15', y2='245')
+                      line.ct-grid.ct-horizontal(x1='1504.25', x2='1504.25', y1='15', y2='245')
+                      line.ct-grid.ct-vertical(y1='245', y2='245', x1='70', x2='1504.25')
+                      line.ct-grid.ct-vertical(y1='199', y2='199', x1='70', x2='1504.25')
+                      line.ct-grid.ct-vertical(y1='153', y2='153', x1='70', x2='1504.25')
+                      line.ct-grid.ct-vertical(y1='107', y2='107', x1='70', x2='1504.25')
+                      line.ct-grid.ct-vertical(y1='61', y2='61', x1='70', x2='1504.25')
+                      line.ct-grid.ct-vertical(y1='15', y2='15', x1='70', x2='1504.25')
+                    g
+                      g.ct-series.ct-series-a(series-name='main')
+                        path.ct-area(d='M70,245L70,245C104.149,242.547,138.298,241.392,172.446,237.64C206.595,233.888,240.744,215.846,274.893,213.72C309.042,211.594,343.19,211.512,377.339,210.04C411.488,208.568,445.637,207.464,479.786,204.52C513.935,201.576,548.083,192.113,582.232,182.44C616.381,172.767,650.53,146.703,684.679,140.12C718.827,133.537,752.976,131.533,787.125,127.24L787.125,245Z')
+                        path.ct-line(d='M70,245C104.149,242.547,138.298,241.392,172.446,237.64C206.595,233.888,240.744,215.846,274.893,213.72C309.042,211.594,343.19,211.512,377.339,210.04C411.488,208.568,445.637,207.464,479.786,204.52C513.935,201.576,548.083,192.113,582.232,182.44C616.381,172.767,650.53,146.703,684.679,140.12C718.827,133.537,752.976,131.533,787.125,127.24')
+                      g.ct-series.ct-series-b(series-name='target')
+                        line.ct-point(x1='70', y1='61', x2='70.01', y2='61', value='100')
+                        line.ct-point(x1='172.44642857142856', y1='61', x2='172.45642857142855', y2='61', value='100')
+                        line.ct-point(x1='274.8928571428571', y1='61', x2='274.9028571428571', y2='61', value='100')
+                        line.ct-point(x1='377.3392857142857', y1='61', x2='377.3492857142857', y2='61', value='100')
+                        line.ct-point(x1='479.7857142857143', y1='61', x2='479.79571428571427', y2='61', value='100')
+                        line.ct-point(x1='582.2321428571429', y1='61', x2='582.2421428571429', y2='61', value='100')
+                        line.ct-point(x1='684.6785714285714', y1='61', x2='684.6885714285714', y2='61', value='100')
+                        line.ct-point(x1='787.125', y1='61', x2='787.135', y2='61', value='100')
+                        line.ct-point(x1='889.5714285714286', y1='61', x2='889.5814285714285', y2='61', value='100')
+                        line.ct-point(x1='992.0178571428571', y1='61', x2='992.0278571428571', y2='61', value='100')
+                        line.ct-point(x1='1094.4642857142858', y1='61', x2='1094.4742857142858', y2='61', value='100')
+                        line.ct-point(x1='1196.9107142857142', y1='61', x2='1196.9207142857142', y2='61', value='100')
+                        line.ct-point(x1='1299.357142857143', y1='61', x2='1299.3671428571429', y2='61', value='100')
+                        line.ct-point(x1='1401.8035714285713', y1='61', x2='1401.8135714285713', y2='61', value='100')
+                        line.ct-point(x1='1504.25', y1='61', x2='1504.26', y2='61', value='100')
+                    g.ct-labels
+                      foreignobject(style='overflow: visible;', x='70', y='250', width='102.44642857142857', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 01/01/2017
+                      foreignobject(style='overflow: visible;', x='172.44642857142856', y='250', width='102.44642857142857', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 03/01/2017
+                      foreignobject(style='overflow: visible;', x='274.8928571428571', y='250', width='102.44642857142858', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 14/01/2017
+                      foreignobject(style='overflow: visible;', x='377.3392857142857', y='250', width='102.44642857142856', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 15/01/2017
+                      foreignobject(style='overflow: visible;', x='479.7857142857143', y='250', width='102.44642857142861', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 19/01/2017
+                      foreignobject(style='overflow: visible;', x='582.2321428571429', y='250', width='102.44642857142856', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 22/01/2017
+                      foreignobject(style='overflow: visible;', x='684.6785714285714', y='250', width='102.44642857142856', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 26/01/2017
+                      foreignobject(style='overflow: visible;', x='787.125', y='250', width='102.44642857142856', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') 27/10/2017
+                      foreignobject(style='overflow: visible;', x='889.5714285714286', y='250', width='102.44642857142856', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', x='992.0178571428571', y='250', width='102.44642857142867', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', x='1094.4642857142858', y='250', width='102.44642857142844', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', x='1196.9107142857142', y='250', width='102.44642857142867', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', x='1299.357142857143', y='250', width='102.44642857142844', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', x='1401.8035714285713', y='250', width='102.44642857142867', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 102px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', x='1504.25', y='250', width='30', height='20')
+                        span.ct-label.ct-horizontal.ct-end(style='width: 30px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/')
+                      foreignobject(style='overflow: visible;', y='199', x='10', height='46', width='50')
+                        span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 0.00%
+                      foreignobject(style='overflow: visible;', y='153', x='10', height='46', width='50')
+                        span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 25.00%
+                      foreignobject(style='overflow: visible;', y='107', x='10', height='46', width='50')
+                        span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 50.00%
+                      foreignobject(style='overflow: visible;', y='61', x='10', height='46', width='50')
+                        span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 75.00%
+                      foreignobject(style='overflow: visible;', y='15', x='10', height='46', width='50')
+                        span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 100.00%
+                      foreignobject(style='overflow: visible;', y='-15', x='10', height='30', width='50')
+                        span.ct-label.ct-vertical.ct-start(style='height: 30px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 125.00%
+
+mixin modalExpenses()
+  div#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true', style={'z-index': '20001'})
+    div.modal-dialog(role='document', style={'width' : '800px !important', 'max-width' : '800px !important' })
+      div.modal-content
+        div.modal-header
+          h5#exampleModalLabel.modal-title Registrar Gasto
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+        div.modal-body
+          form(action="#" method="method")
+            div.row.card-block
+              div.col-xs-12.col-md-12
+              div.col-md-12.col-xs-12
+                div.form-group
+                  label(for='conceptoGeneral') Concepto General
+                  select.form-control(style={'margin-bottom': '1%'})
+                    option(value="UV") Unidad de Verificación (Auditorias) 
+                    option(value="PA") Proyectos Ambientales
+                    option(value="PE") Proyectos Especiales
+                    option(value="SU") Suelo
+                    option(value="IN") Inogen
+                    option(value="OVV") Ovvalo
+                div.form-group
+                  label(for='conceptoEspecifico') Concepto Especifico
+                  select.form-control(style={'margin-bottom': '1%'})
+                    option(value="UV") Unidad de Verificación (Auditorias) 
+                    option(value="PA") Proyectos Ambientales
+                    option(value="PE") Proyectos Especiales
+                    option(value="SU") Suelo
+                    option(value="IN") Inogen
+                    option(value="OVV") Ovvalo
+                div.form-group
+                  label(for='detalle') Detalle
+                  input.form-control(type='text', name='detalle' placeholder='')
+                div.form-group
+                  label(for='importe') Importe
+                  input.form-control(type='number', name='importe' placeholder='$ 525.00')
+                div.form-group
+                  label(for='iva') I.V.A
+                  input.form-control(type='number', name='iva' placeholder='$ 25.00')
+        div.modal-footer
+          button.btn.btn-secondary(type='button', data-dismiss='modal') Cerrar
+          button.btn.btn-primary(type='button') Guardar Cambios
+
+
+block content
+  include ./navbar.jade
+  div.container-fluid
+    +header("Proyecto de Ovvalo", "Ovvalo")
+    div.row
+      div.col-md-10.offset-md-1.col-xs-12
+        +generalInfo()
+        +graphNumbers()
+  +modalExpenses()
+  script.
+    $( function() {
+    $( "#fechaInicio" ).datepicker();
+    $( "#fechaFin" ).datepicker();
+    $( "#fechaCompra" ).datepicker();
+    $( "#fechaFactura" ).datepicker();
+    } );
+  script.
+    $('#myModal').on('shown.bs.modal', function () { 
+      $('#myInput').focus()
+    });

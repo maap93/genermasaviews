@@ -1,0 +1,99 @@
+extends ./layout.jade
+
+block additional_styles
+
+block additional_scripts
+
+mixin card(title, projectType, img)
+  div.card(style={'margin':'5%',  'box-shadow': '0px 1px 5px #888888'})
+    div.card-block
+      div(style={'text-align': 'center'})
+        h4.card-title #{title}
+        h4 #{projectType}
+      div.example(style={'vertical-align': 'middle', 'text-align': 'center'})
+        img(src= img , alt="alt", height="84", width="84")
+    div.card-footer.card-footer-transparent.card-footer-bordered.text-muted(style={display: 'flex', 'align-items': 'baseline', 'flex-direction': 'row-reverse'})
+      a.nav-link(style={color: '#757575', 'margin-left': '3%'}, data-toggle='dropdown', href='javascript:void(0)', title='Notifications', aria-expanded='false', data-animation='slide-bottom', role='button')
+        i.icon.md-view-headline
+      a.nav-link(href="#")
+        h4 Ver
+
+mixin cardContainer()
+  div.card(style={'margin-top':'5%', 'box-shadow': '0px 1px 5px #888888'})
+    div.nav-tabs-vertical(data-plugin='tabs').card-block
+      ul.nav.nav-tabs.nav-tabs-line.mr-25(role='tablist', style={'margin-top':'6%'})
+        li.nav-item(role='presentation', style={'margin-right':'20px !important'})
+          label
+            input(type="checkbox", style={'margin-right': '10px !important'})
+          | Unidad de Verificación
+        li.nav-item(role='presentation')
+          label
+            input(type="checkbox", style={'margin-right': '10px !important'})
+          | Proyectos Ambientales
+        li.nav-item(role='presentation')
+          label
+            input(type="checkbox", style={'margin-right': '10px !important'})
+          | Proyectos Especiales
+        li.nav-item(role='presentation')
+          label
+            input(type="checkbox", style={'margin-right': '10px !important'})
+          | Suelo
+        li.nav-item(role='presentation')
+          label
+            input(type="checkbox", style={'margin-right': '10px !important'})
+          | Inogen
+        li.nav-item(role='presentation')
+          label
+            input(type="checkbox", style={'margin-right': '10px !important'})
+          | Ovvalo
+      div.tab-content.py-15
+        div#exampleTabsLineLeftOne.tab-pane.active(role='tabpanel')
+          div.row
+            div.col-md-12.col-xs-12
+              h1 Proyectos
+            div.col-md-12
+              div.input-search
+                button.input-search-btn(type='submit')
+                  i.icon.md-search(aria-hidden='true')
+                input.form-control(type='text', name='', placeholder='Buscar...')
+            div.col-md-12
+              div.row
+                div.col-md-4
+                  +card("Proyecto de Verificación", "Unidad de Verificación", "assets/images/verify.png")
+                div.col-md-4
+                  +card("Proyecto Ambientale", "Proyectos Ambientales", "assets/images/ambiental.png")
+                div.col-md-4
+                  +card("Proyecto Especiale", "Proyectos Especiales", "assets/images/special.png")
+                div.col-md-4
+                  +card("Proyecto de Suelo", "Suelo", "assets/images/rock.png")
+                div.col-md-4
+                  +card("Proyecto de Inogen", "Inogen", "assets/images/inogen.png")
+                div.col-md-4
+                  +card("Proyecto de Ovvalo", "Ovvalo", "assets/images/ovvalo.jpg")
+              div.nav.text-xs-center(style={'justify-content': 'center'})
+                ul.pagination
+                  li.page-item
+                    a.page-link(href='javascript:void(0)', aria-label='Previous')
+                      span(aria-hidden='true') «
+                  li.page-item
+                    a.page-link(href='javascript:void(0)') 1
+                  li.page-item
+                    a.page-link(href='javascript:void(0)') 2
+                  li.page-item
+                    a.page-link(href='javascript:void(0)') 3
+                  li.page-item
+                    a.page-link(href='javascript:void(0)') 4
+                  li.page-item
+                    a.page-link(href='javascript:void(0)') 5
+                  li.page-item
+                    a.page-link(href='javascript:void(0)', aria-label='Next')
+                      span(aria-hidden='true') »
+
+
+
+block content
+  include ./navbar.jade
+  div.container-fluid
+    div.row
+      div.col-md-10.offset-md-1.col-xs-12
+        +cardContainer()

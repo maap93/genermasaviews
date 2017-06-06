@@ -1,0 +1,257 @@
+<h1 id="moment-range">moment-range</h1>
+<p>Fancy date ranges for <a href="http://momentjs.com/">Moment.js</a>.</p>
+<p>Detailed API documentation can be found at: <a href="http://gf3.github.io/moment-range/DateRange.html">http://gf3.github.io/moment-range/DateRange.html</a></p>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<ul>
+<li><a href="#examples">Examples</a><ul>
+<li><a href="#create">Create</a></li>
+<li><a href="#contains--within--overlaps--intersect--add--subtract">Contains / Within / Overlaps / Intersect / Add / Subtract</a></li>
+<li><a href="#iterate">Iterate</a></li>
+<li><a href="#compare">Compare</a></li>
+<li><a href="#equality">Equality</a></li>
+<li><a href="#difference">Difference</a></li>
+<li><a href="#conversion">Conversion</a><ul>
+<li><a href="#toarray"><code>toArray</code></a></li>
+<li><a href="#todate"><code>toDate</code></a></li>
+<li><a href="#tostring"><code>toString</code></a></li>
+<li><a href="#valueof"><code>valueOf</code></a></li>
+</ul>
+</li>
+<li><a href="#center">Center</a></li>
+<li><a href="#clone">Clone</a></li>
+</ul>
+</li>
+<li><a href="#installation">Installation</a><ul>
+<li><a href="#browser">Browser</a></li>
+<li><a href="#npm">NPM</a></li>
+<li><a href="#bower">Bower</a></li>
+</ul>
+</li>
+<li><a href="#running-tests">Running Tests</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h2 id="examples">Examples</h2>
+<h3 id="create">Create</h3>
+<p>Create a date range:</p>
+<pre><code class="lang-javascript">var start = new Date(2012, 0, 15);
+var end   = new Date(2012, 4, 23);
+var range = moment.range(start, end);
+</code></pre>
+<p>You can also create a date range with moment objects:</p>
+<pre><code class="lang-javascript">var start = moment(&quot;2011-04-15&quot;, &quot;YYYY-MM-DD&quot;);
+var end   = moment(&quot;2011-11-27&quot;, &quot;YYYY-MM-DD&quot;);
+var range = moment.range(start, end);
+</code></pre>
+<p>Arrays work too:</p>
+<pre><code class="lang-javascript">var dates = [moment(&quot;2011-04-15&quot;, &quot;YYYY-MM-DD&quot;), moment(&quot;2011-11-27&quot;, &quot;YYYY-MM-DD&quot;)];
+var range = moment.range(dates);
+</code></pre>
+<p>You can also create a range from an <a href="http://en.wikipedia.org/wiki/ISO_8601#Time_intervals">ISO 8601 time interval</a> string:</p>
+<pre><code class="lang-javascript">var timeInterval = &quot;2015-01-17T09:50:04+00:00/2015-04-17T08:29:55+00:00&quot;;
+var range = moment.range(timeInterval);
+</code></pre>
+<p>You can also create a range from the start until the end of a named interval:</p>
+<pre><code class="lang-javascript">var date = moment(&quot;2011-04-15&quot;, &quot;YYYY-MM-DD&quot;);
+var range = date.range(&quot;month&quot;);
+</code></pre>
+<p>You can also create open-ended ranges which go to the earliest or latest possible date:</p>
+<pre><code class="lang-javascript">var rangeUntil = moment.range(null, &quot;2011-05-05&quot;);
+var rangeFrom = moment.range(&quot;2011-03-05&quot;, null);
+var rangeAllTime = moment.range(null, null);
+</code></pre>
+<h3 id="contains-within-overlaps-intersect-add-subtract">Contains / Within / Overlaps / Intersect / Add / Subtract</h3>
+<p>Check to see if your range contains a date/moment:</p>
+<pre><code class="lang-javascript">var start  = new Date(2012, 4, 1);
+var end    = new Date(2012, 4, 23);
+var lol    = new Date(2012, 4, 15);
+var wat    = new Date(2012, 4, 27);
+var range  = moment.range(start, end);
+var range2 = moment.range(lol, wat);
+
+range.contains(lol); // true
+range.contains(wat); // false
+</code></pre>
+<p>A optional second parameter indicates if the end of the range
+should be excluded when testing for inclusion</p>
+<pre><code class="lang-javascript">range.contains(end) // true
+range.contains(end, false) // true
+range.contains(end, true) // false
+</code></pre>
+<p>Find out if your moment falls within a date range:</p>
+<pre><code class="lang-javascript">var start = new Date(2012, 4, 1);
+var end   = new Date(2012, 4, 23);
+var when  = moment(&quot;2012-05-10&quot;, &quot;YYYY-MM-DD&quot;);
+var range = moment.range(start, end);
+
+when.within(range); // true
+</code></pre>
+<p>Does it overlap another range?</p>
+<pre><code class="lang-javascript">range.overlaps(range2); // true
+</code></pre>
+<p>What are the intersecting ranges?</p>
+<pre><code class="lang-javascript">range.intersect(range2); // [moment.range(lol, end)]
+</code></pre>
+<p>Add/combine/merge overlapping ranges.</p>
+<pre><code class="lang-javascript">range.add(range2); // [moment.range(start, wat)]
+
+var range3 = moment.range(new Date(2012, 3, 1), new Date(2012, 3, 15);
+range.add(range3); // [null]
+</code></pre>
+<p>Subtracting one range from another.</p>
+<pre><code class="lang-javascript">range.subtract(range2); // [moment.range(start, lol)]
+</code></pre>
+<h3 id="iterate">Iterate</h3>
+<p>Iterate over your date range by an amount of time or another range:</p>
+<pre><code class="lang-javascript">var start = new Date(2012, 2, 1);
+var two   = new Date(2012, 2, 2);
+var end   = new Date(2012, 2, 5);
+var range1 = moment.range(start, end);
+var range2 = moment.range(start, two); // One day
+var acc = [];
+
+range1.by(&#39;days&#39;, function(moment) {
+  // Do something with `moment`
+});
+</code></pre>
+<p>Any of the units accepted by <a href="http://momentjs.com/docs/#/manipulating/add/">moment.js&#39; <code>add</code>
+method</a> may be used.</p>
+<p>You can also iterate by another range:</p>
+<pre><code class="lang-javascript">range1.by(range2, function(moment) {
+  // Do something with `moment`
+  acc.push(moment);
+});
+
+acc.length == 5 // true
+</code></pre>
+<p>Iteration also supports excluding the end value of the range by setting the
+last parameter to <code>true</code>.</p>
+<pre><code class="lang-javascript">var acc = [];
+
+range1.by(&#39;d&#39;, function (moment) {
+  acc.push(moment)
+}, true);
+
+acc.length == 4 // true
+</code></pre>
+<h3 id="compare">Compare</h3>
+<p>Compare range lengths or add them together with simple math:</p>
+<pre><code class="lang-javascript">var r_1 = moment.range(new Date(2011, 2, 5), new Date(2011, 3, 15));
+var r_2 = moment.range(new Date(1995, 0, 1), new Date(1995, 12, 25));
+
+r_2 &gt; r_1 // true
+
+r_1 + r_2 // duration of both ranges in milliseconds
+
+Math.abs(r_1 - r_2); // difference of ranges in milliseconds
+</code></pre>
+<h3 id="equality">Equality</h3>
+<p>Check if two ranges are the same, i.e. their starts and ends are the same:</p>
+<pre><code class="lang-javascript">var r_1 = moment.range(new Date(2011, 2, 5), new Date(2011, 3, 15));
+var r_2 = moment.range(new Date(2011, 2, 5), new Date(2011, 3, 15));
+var r_3 = moment.range(new Date(2011, 3, 5), new Date(2011, 6, 15));
+
+r_1.isSame(r_2); // true
+r_2.isSame(r_3); // false
+</code></pre>
+<h3 id="difference">Difference</h3>
+<p>The difference of the entire range given various units.</p>
+<p>Any of the units accepted by <a href="http://momentjs.com/docs/#/manipulating/add/">moment.js&#39; <code>add</code>
+method</a> may be used.</p>
+<pre><code class="lang-javascript">var start = new Date(2011, 2, 5);
+var end   = new Date(2011, 5, 5);
+var dr    = moment.range(start, end);
+
+dr.diff(&#39;months&#39;); // 3
+dr.diff(&#39;days&#39;); // 92
+dr.diff(); // 7945200000
+</code></pre>
+<h3 id="conversion">Conversion</h3>
+<h4 id="-toarray-"><code>toArray</code></h4>
+<p>Converts the <code>DateRange</code> to an <code>Array</code> of <code>Date</code> objects.</p>
+<pre><code class="lang-javascript">var start = new Date(2011, 2, 5);
+var end   = new Date(2011, 5, 5);
+var dr    = moment.range(start, end);
+
+dr.toArray(&#39;days&#39;); // [new Date(2011, 2, 5), new Date(2011, 3, 5), new Date(2011, 4, 5), new Date(2011, 5, 5)]
+</code></pre>
+<h4 id="-todate-"><code>toDate</code></h4>
+<p>Converts the <code>DateRange</code> to an <code>Array</code> of the start and end <code>Date</code> objects.</p>
+<pre><code class="lang-javascript">var start = new Date(2011, 2, 5);
+var end   = new Date(2011, 5, 5);
+var dr    = moment.range(start, end);
+
+dr.toDate(); // [new Date(2011, 2, 5), new Date(2011, 5, 5)]
+</code></pre>
+<h4 id="-tostring-"><code>toString</code></h4>
+<p>Converting a <code>DateRange</code> to a <code>String</code> will format it as an <a href="http://en.wikipedia.org/wiki/ISO_8601#Time_intervals">ISO 8601 time
+interval</a>:</p>
+<pre><code class="lang-javascript">var start = &#39;2015-01-17T09:50:04+00:00&#39;;
+var end   = &#39;2015-04-17T08:29:55+00:00&#39;;
+var range = moment.range(moment.utc(start), moment.utc(end));
+
+range.toString() // &quot;2015-01-17T09:50:04+00:00/2015-04-17T08:29:55+00:00&quot;
+</code></pre>
+<h4 id="-valueof-"><code>valueOf</code></h4>
+<p>The difference between the end date and start date in milliseconds.</p>
+<pre><code class="lang-javascript">var start = new Date(2011, 2, 5);
+var end   = new Date(2011, 5, 5);
+var range = moment.range(start, end);
+
+range.valueOf(); // 7945200000
+</code></pre>
+<h3 id="center">Center</h3>
+<p>Calculate the center of a range</p>
+<pre><code class="lang-javascript">var start = new Date(2011, 2, 5);
+var end   = new Date(2011, 3, 5);
+var dr    = moment.range(start, end);
+
+dr.center(); // 1300622400000
+</code></pre>
+<h3 id="clone">Clone</h3>
+<p>Deep clone a range</p>
+<pre><code class="lang-javascript">var start = new Date(2011, 2, 5);
+var end   = new Date(2011, 3, 5);
+var dr    = moment.range(start, end);
+
+var dr2 = dr.clone();
+dr2.start.add(2, &#39;days&#39;);
+
+dr2.start.toDate() === dr.start.toDate() // false
+</code></pre>
+<h2 id="installation">Installation</h2>
+<p>moment-range works in both the browser and <a href="http://nodejs.org/">node.js</a>.</p>
+<h3 id="node-npm">Node / NPM</h3>
+<p>Install via npm:</p>
+<pre><code class="lang-sh">npm install moment-range
+</code></pre>
+<p>And then <code>require</code> it:</p>
+<pre><code class="lang-javascript">var moment = require(&#39;moment&#39;);
+require(&#39;moment-range&#39;);
+</code></pre>
+<h3 id="browser">Browser</h3>
+<p>Simply include moment-range after moment.js:</p>
+<pre><code class="lang-html">&lt;script src=&quot;moment.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;moment-range.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>Thanks to the fine people at <a href="https://github.com/cdnjs/cdnjs">cdnjs</a>, you can link to moment-range from
+the <a href="https://cdnjs.com/libraries/moment-range">cdnjs servers</a>.</p>
+<h3 id="bower">Bower</h3>
+<pre><code class="lang-sh">bower install moment-range
+</code></pre>
+<p><strong>Note:</strong> Include <code>moment-range</code> <em>after</em> <code>moment</code>.</p>
+<h2 id="running-tests">Running Tests</h2>
+<p>Clone this bad boy:</p>
+<pre><code class="lang-bash">git clone https://git@github.com/gf3/moment-range.git
+</code></pre>
+<p>Install the dependencies:</p>
+<pre><code class="lang-bash">npm install
+</code></pre>
+<p>Do all the things!</p>
+<pre><code class="lang-bash">npm run-script build
+npm run-script test
+npm run-script jsdoc
+</code></pre>
+<h2 id="license">License</h2>
+<p>moment-range is <a href="http://unlicense.org/">UNLICENSED</a>.</p>

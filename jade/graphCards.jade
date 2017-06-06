@@ -1,0 +1,114 @@
+extends ./layout.jade
+
+mixin projectOverview(valor, gasto, util, disp)
+  div(style={ 'box-shadow': '0px 1px 5px #888888'})
+    div.card-block
+      h4.card-title Métricas de Progreso
+      div.row
+        div.col-md-6.col-xs-12
+          p.card-text
+            ul(style={'list-style-type' : 'none', 'line-height' : '200%'})
+              li
+                b(style={'font-weight': 'bold'}) Valor Presupuestado: 
+                | $ #{valor}
+              li
+                b(style={'font-weight': 'bold'}) Gasto Total: 
+                | $ #{gasto}
+              li
+                b(style={'font-weight': 'bold'}) Porcentaje Utilizado: 
+                | #{util} %
+              li
+                b(style={'font-weight': 'bold'}) Porcentaje Disponible: 
+                | #{disp} %
+        div.col-md-6.col-xs-12
+          .example
+            #exampleSimpleLine.ct-chart
+              svg.ct-chart-line(xmlns:ct='http://gionkunz.github.com/chartist-js/ct', width='100%', height='100%', style='width: 100%; height: 100%;')
+                g.ct-grids
+                  line.ct-grid.ct-horizontal(x1='50', x2='50', y1='15', y2='245')
+                  line.ct-grid.ct-horizontal(x1='212.40625', x2='212.40625', y1='15', y2='245')
+                  line.ct-grid.ct-horizontal(x1='374.8125', x2='374.8125', y1='15', y2='245')
+                  line.ct-grid.ct-horizontal(x1='537.21875', x2='537.21875', y1='15', y2='245')
+                  line.ct-grid.ct-horizontal(x1='699.625', x2='699.625', y1='15', y2='245')
+                  line.ct-grid.ct-vertical(y1='245', y2='245', x1='50', x2='699.625')
+                  line.ct-grid.ct-vertical(y1='199', y2='199', x1='50', x2='699.625')
+                  line.ct-grid.ct-vertical(y1='153', y2='153', x1='50', x2='699.625')
+                  line.ct-grid.ct-vertical(y1='107', y2='107', x1='50', x2='699.625')
+                  line.ct-grid.ct-vertical(y1='61', y2='61', x1='50', x2='699.625')
+                  line.ct-grid.ct-vertical(y1='15', y2='15', x1='50', x2='699.625')
+                g
+                  g.ct-series.ct-series-a
+                    path.ct-line(d='M50,24.2C104.135,42.6,158.271,64.68,212.406,79.4C266.542,94.12,320.677,116.2,374.813,116.2C428.948,116.2,483.083,97.8,537.219,97.8C591.354,97.8,645.49,134.6,699.625,153')
+                    line.ct-point(x1='50', y1='24.19999999999999', x2='50.01', y2='24.19999999999999', value='12')
+                    line.ct-point(x1='212.40625', y1='79.4', x2='212.41625', y2='79.4', value='9')
+                    line.ct-point(x1='374.8125', y1='116.19999999999999', x2='374.8225', y2='116.19999999999999', value='7')
+                    line.ct-point(x1='537.21875', y1='97.80000000000001', x2='537.22875', y2='97.80000000000001', value='8')
+                    line.ct-point(x1='699.625', y1='153', x2='699.635', y2='153', value='5')
+                  g.ct-series.ct-series-b
+                    path.ct-line(d='M50,208.2C104.135,214.333,158.271,226.6,212.406,226.6C266.542,226.6,320.677,198.489,374.813,180.6C428.948,162.711,483.083,116.2,537.219,116.2C591.354,116.2,645.49,165.267,699.625,189.8')
+                    line.ct-point(x1='50', y1='208.2', x2='50.01', y2='208.2', value='2')
+                    line.ct-point(x1='212.40625', y1='226.6', x2='212.41625', y2='226.6', value='1')
+                    line.ct-point(x1='374.8125', y1='180.6', x2='374.8225', y2='180.6', value='3.5')
+                    line.ct-point(x1='537.21875', y1='116.19999999999999', x2='537.22875', y2='116.19999999999999', value='7')
+                    line.ct-point(x1='699.625', y1='189.8', x2='699.635', y2='189.8', value='3')
+                  g.ct-series.ct-series-c
+                    path.ct-line(d='M50,226.6C104.135,214.333,158.271,197.978,212.406,189.8C266.542,181.622,320.677,177.533,374.813,171.4C428.948,165.267,483.083,159.133,537.219,153C591.354,146.867,645.49,140.733,699.625,134.6')
+                    line.ct-point(x1='50', y1='226.6', x2='50.01', y2='226.6', value='1')
+                    line.ct-point(x1='212.40625', y1='189.8', x2='212.41625', y2='189.8', value='3')
+                    line.ct-point(x1='374.8125', y1='171.4', x2='374.8225', y2='171.4', value='4')
+                    line.ct-point(x1='537.21875', y1='153', x2='537.22875', y2='153', value='5')
+                    line.ct-point(x1='699.625', y1='134.6', x2='699.635', y2='134.6', value='6')
+                g.ct-labels
+                  foreignobject(style='overflow: visible;', x='50', y='250', width='162.40625', height='20')
+                    span.ct-label.ct-horizontal.ct-end(style='width: 162px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') Monday
+                  foreignobject(style='overflow: visible;', x='212.40625', y='250', width='162.40625', height='20')
+                    span.ct-label.ct-horizontal.ct-end(style='width: 162px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') Tuesday
+                  foreignobject(style='overflow: visible;', x='374.8125', y='250', width='162.40625', height='20')
+                    span.ct-label.ct-horizontal.ct-end(style='width: 162px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') Wednesday
+                  foreignobject(style='overflow: visible;', x='537.21875', y='250', width='162.40625', height='20')
+                    span.ct-label.ct-horizontal.ct-end(style='width: 162px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') Thursday
+                  foreignobject(style='overflow: visible;', x='699.625', y='250', width='30', height='20')
+                    span.ct-label.ct-horizontal.ct-end(style='width: 30px; height: 20px', xmlns='http://www.w3.org/2000/xmlns/') Friday
+                  foreignobject(style='overflow: visible;', y='199', x='10', height='46', width='30')
+                    span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 30px', xmlns='http://www.w3.org/2000/xmlns/') 0
+                  foreignobject(style='overflow: visible;', y='153', x='10', height='46', width='30')
+                    span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 30px', xmlns='http://www.w3.org/2000/xmlns/') 2.5
+                  foreignobject(style='overflow: visible;', y='107', x='10', height='46', width='30')
+                    span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 30px', xmlns='http://www.w3.org/2000/xmlns/') 5
+                  foreignobject(style='overflow: visible;', y='61', x='10', height='46', width='30')
+                    span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 30px', xmlns='http://www.w3.org/2000/xmlns/') 7.5
+                  foreignobject(style='overflow: visible;', y='15', x='10', height='46', width='30')
+                    span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 30px', xmlns='http://www.w3.org/2000/xmlns/') 10
+                  foreignobject(style='overflow: visible;', y='-15', x='10', height='30', width='30')
+                    span.ct-label.ct-vertical.ct-start(style='height: 30px; width: 30px', xmlns='http://www.w3.org/2000/xmlns/') 12.5
+
+    div.card-footer.card-footer-transparent.card-footer-bordered.text-muted
+      | 
+
+mixin projectDescription(description)
+  div.card(style={'margin-top':'5%', 'box-shadow': '0px 1px 5px #888888'})
+    div.card-block
+      h4.card-title Detalles del Proyecto
+      p.card-text(style={margin: '5%'}) #{description}
+      a.btn.btn-primary.waves-effect.waves-classic(href='#') Detalles
+    div.card-footer.card-footer-transparent.card-footer-bordered.text-muted
+      | 
+      
+block additional_styles
+  link(rel='stylesheet', href='global/vendor/chartist/chartist.css')
+  link(rel='stylesheet', href='global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css')
+  link(rel='stylesheet', href='assets/examples/css/charts/chartist.css')
+  
+block additional_scripts
+  script(src='global/vendor/chartist/chartist.js')
+  script(src='global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js')
+
+block content
+  include ./navbar.jade
+  div.container-fluid
+    div.jumbotron(style={    margin:' 0 -0.9375rem'})
+      +projectOverview("valorA", "valorB", "valorC", "valorD")
+    div.row
+      div.col-md-8.offset-md-2.col-xs-12
+        +projectDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et elit nisi. In nec lacus dignissim, pharetra odio ac, egestas libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce blandit dictum lectus, sit amet consectetur sapien scelerisque eget. Cras ac interdum sapien. Nulla ut elementum nisi, nec aliquam nibh. In luctus congue libero, quis ultrices arcu ornare at. Sed elit enim, lacinia vehicula egestas nec, rhoncus ac ante. Curabitur aliquam quis erat vitae imperdiet. Cras sed lectus consequat, egestas nisi ut, vestibulum purus. Nulla ut risus hendrerit, convallis libero eu, elementum quam. Ut eu sapien magna. Etiam ut purus ligula. Duis ligula nisl, vehicula in auctor a, ultrices sed felis. Nullam volutpat nisl sit amet turpis vestibulum, vel tincidunt tellus accumsan.")
+          
