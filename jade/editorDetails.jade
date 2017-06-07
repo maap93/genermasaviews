@@ -59,6 +59,7 @@ mixin generalInfo()
               p
                 b Lugar de Realización:
                 input.form-control(type="text")
+            div.col-md-6.col-xs-12(style={'margin-top': '3%'})
               p
                 b Fecha Inicio:
                 div.input-group(style={'margin-bottom': '1%'})
@@ -71,7 +72,6 @@ mixin generalInfo()
                   span.input-group-addon
                     i.icon.md-calendar(aria-hidden='true')
                   input.form-control(type='text',id="fechaFin", data-plugin='datepicker', placeholder="mm/dd/yyyy")
-            div.col-md-6.col-xs-12(style={'margin-top': '3%'})
               p
                 b Comentarios
                 br
@@ -99,13 +99,14 @@ mixin generalInfo()
               p
                 b Teléfono Celular: 
                 input.form-control(type="text")
+              
+            div.col-md-6.col-xs-12(style={'margin-top': '3%'})
               p
                 b E-mail:
                 input.form-control(type="text")
               p
                 b Usuario de Skype:
                 input.form-control(type="text")
-            div.col-md-6.col-xs-12(style={'margin-top': '3%'})
               p
                 b Informacion adicional:
                 br
@@ -135,10 +136,16 @@ mixin generalInfo()
                 b E-mail
                 input.form-control(type="text")
               p
-                b Orden de Compra/No. de Contrato: 
+                b Sitio Web
                 input.form-control(type="text")
             div.col-md-6.col-xs-12
               h3(style={'margin-top': '2%', 'margin-bottom': '5%'})
+              p
+                b Orden de Compra/No. de Contrato: 
+                input.form-control(type="text")
+              p
+                b Concepto de Facturación: 
+                input.form-control(type="text")
               p
                 b Fecha de orden de compra/contrato: 
                 div.input-group(style={'margin-bottom': '1%'})
@@ -152,14 +159,19 @@ mixin generalInfo()
                     i.icon.md-calendar(aria-hidden='true')
                   input.form-control(type='text',id="fechaFactura", data-plugin='datepicker', placeholder="mm/dd/yyyy")
               p
-                b Concepto de Facturación: 
-                input.form-control(type="text")
-              p
                 b Instrucciones de Facturación:
                 textarea#textareaDefault.form-control(rows='5', placeholder="Comentarios", style={'margin-bottom': '1%'})
                 div(style={float : 'right'})
-                  button.btn.btn-primary(type="submit") Guardar
-                  button.btn.btn-primary(type="submit") Cancelar
+              br               
+            div.col-xs-12.col-md-12
+              div.pearls.row
+                div.pearl.done.col
+                  span.pearl-number 1
+                  span.pearl-title Primer Pago
+                div.pearl.current.col
+                  span.pearl-number(onclick="location.href='#'", style={cursor : 'pointer'}) +
+                  span.pearl-title Agregar
+
         div#exampleIconifiedTabsFour.tab-pane(role='tabpanel', aria-expanded='false')
           div.row
             div.col-md-12.col-xs-12

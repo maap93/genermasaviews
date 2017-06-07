@@ -109,6 +109,8 @@
                       <p><b>Lugar de Realización:</b>
                         <input class="form-control" type="text"/>
                       </p>
+                    </div>
+                    <div class="col-md-6 col-xs-12" style="margin-top:3%;">
                       <p><b>Fecha Inicio:</b>
                         <div class="input-group" style="margin-bottom:1%;"><span class="input-group-addon"><i class="icon md-calendar" aria-hidden="true"></i></span>
                           <input class="form-control" type="text" id="fechaInicio" data-plugin="datepicker" placeholder="mm/dd/yyyy"/>
@@ -119,8 +121,6 @@
                           <input class="form-control" type="text" id="fechaFin" data-plugin="datepicker" placeholder="mm/dd/yyyy"/>
                         </div>
                       </p>
-                    </div>
-                    <div class="col-md-6 col-xs-12" style="margin-top:3%;">
                       <p><b>Comentarios</b><br/>
                         <textarea class="form-control" id="textareaDefault" rows="5" placeholder="Comentarios" style="margin-bottom:1%;"></textarea>
                         <div style="float:right;">
@@ -152,14 +152,14 @@
                       <p><b>Teléfono Celular: </b>
                         <input class="form-control" type="text"/>
                       </p>
+                    </div>
+                    <div class="col-md-6 col-xs-12" style="margin-top:3%;">
                       <p><b>E-mail:</b>
                         <input class="form-control" type="text"/>
                       </p>
                       <p><b>Usuario de Skype:</b>
                         <input class="form-control" type="text"/>
                       </p>
-                    </div>
-                    <div class="col-md-6 col-xs-12" style="margin-top:3%;">
                       <p><b>Informacion adicional:</b><br/>
                         <textarea class="form-control" id="textareaDefault" rows="5" placeholder="Comentarios" style="margin-bottom:1%;"></textarea>
                         <div style="float:right;">
@@ -192,12 +192,18 @@
                       <p><b>E-mail</b>
                         <input class="form-control" type="text"/>
                       </p>
-                      <p><b>Orden de Compra/No. de Contrato: </b>
+                      <p><b>Sitio Web</b>
                         <input class="form-control" type="text"/>
                       </p>
                     </div>
                     <div class="col-md-6 col-xs-12">
                       <h3 style="margin-top:2%;margin-bottom:5%;"></h3>
+                      <p><b>Orden de Compra/No. de Contrato: </b>
+                        <input class="form-control" type="text"/>
+                      </p>
+                      <p><b>Concepto de Facturación: </b>
+                        <input class="form-control" type="text"/>
+                      </p>
                       <p><b>Fecha de orden de compra/contrato: </b>
                         <div class="input-group" style="margin-bottom:1%;"><span class="input-group-addon"><i class="icon md-calendar" aria-hidden="true"></i></span>
                           <input class="form-control" type="text" id="fechaCompra" data-plugin="datepicker" placeholder="mm/dd/yyyy"/>
@@ -208,16 +214,16 @@
                           <input class="form-control" type="text" id="fechaFactura" data-plugin="datepicker" placeholder="mm/dd/yyyy"/>
                         </div>
                       </p>
-                      <p><b>Concepto de Facturación: </b>
-                        <input class="form-control" type="text"/>
-                      </p>
                       <p><b>Instrucciones de Facturación:</b>
                         <textarea class="form-control" id="textareaDefault" rows="5" placeholder="Comentarios" style="margin-bottom:1%;"></textarea>
-                        <div style="float:right;">
-                          <button class="btn btn-primary" type="submit">Guardar</button>
-                          <button class="btn btn-primary" type="submit">Cancelar</button>
-                        </div>
-                      </p>
+                        <div style="float:right;"></div>
+                      </p><br/>
+                    </div>
+                    <div class="col-xs-12 col-md-12">
+                      <div class="pearls row">
+                        <div class="pearl done col"><span class="pearl-number">1</span><span class="pearl-title">Primer Pago</span></div>
+                        <div class="pearl current col"><span class="pearl-number" onclick="location.href='#'" style="cursor:pointer;">+</span><span class="pearl-title">Agregar</span></div>
+                      </div>
                     </div>
                   </div>
                 </div>
