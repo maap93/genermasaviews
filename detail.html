@@ -202,6 +202,9 @@
                   <div class="row">
                     <div class="col-xs-12 col-md-12">
                       <h1>Gastos</h1>
+                      <div style="float:right;">
+                        <button class="btn btn-primary waves-effect waves-classic" type="button" data-toggle="modal" data-target="#myModal">Agregar Gasto</button>
+                      </div>
                     </div>
                     <div class="col-md-12 col-xs-12" style="margin-top:3%;">
                       <div class="example">
@@ -482,6 +485,63 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:20001;">
+        <div class="modal-dialog" role="document" style="width:800px !important;max-width:800px !important;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Registrar Gasto</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+              <form action="#" method="method">
+                <div class="row card-block">
+                  <div class="col-xs-12 col-md-12"></div>
+                  <div class="col-md-12 col-xs-12">
+                    <div class="form-group">
+                      <label for="conceptoGeneral">Concepto General</label>
+                      <select class="form-control" style="margin-bottom:1%;">
+                        <option value="UV">Unidad de Verificación (Auditorias) </option>
+                        <option value="PA">Proyectos Ambientales</option>
+                        <option value="PE">Proyectos Especiales</option>
+                        <option value="SU">Suelo</option>
+                        <option value="IN">Inogen</option>
+                        <option value="OVV">Ovvalo</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="conceptoEspecifico">Concepto Especifico</label>
+                      <select class="form-control" style="margin-bottom:1%;">
+                        <option value="UV">Unidad de Verificación (Auditorias) </option>
+                        <option value="PA">Proyectos Ambientales</option>
+                        <option value="PE">Proyectos Especiales</option>
+                        <option value="SU">Suelo</option>
+                        <option value="IN">Inogen</option>
+                        <option value="OVV">Ovvalo</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="detalle">Detalle</label>
+                      <input class="form-control" type="text" name="detalle" placeholder=""/>
+                    </div>
+                    <div class="form-group">
+                      <label for="importe">Importe</label>
+                      <input class="form-control" type="number" name="importe" placeholder="$ 525.00"/>
+                    </div>
+                    <div class="form-group">
+                      <label for="iva">I.V.A</label>
+                      <input class="form-control" type="number" name="iva" placeholder="$ 25.00"/>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cerrar</button>
+              <button class="btn btn-primary" type="button">Guardar Cambios</button>
             </div>
           </div>
         </div>

@@ -35,6 +35,10 @@ mixin generalInfo()
             |  Cliente
         li.nav-item(role='presentation')
           a.nav-link(data-toggle='tab', href='#exampleIconifiedTabsThree', aria-controls='exampleIconifiedTabsThree', role='tab', aria-expanded='false')
+            i.icon.md-card(aria-hidden='true')
+            |  Facturación
+        li.nav-item(role='presentation')
+          a.nav-link(data-toggle='tab', href='#exampleIconifiedTabsFour', aria-controls='exampleIconifiedTabsFour', role='tab', aria-expanded='false')
             i.icon.md-accounts(aria-hidden='true')
             |  Miembros
       div.tab-content.pt-15
@@ -79,8 +83,7 @@ mixin generalInfo()
           div.row
             div.col-xs-12.col-md-12
               h1 Datos del Cliente
-            div.col-md-5.col-xs-12.offset-md-1
-              h3(style={'margin-top': '2%', 'margin-bottom': '5%'}) Datos Generales
+            div.col-md-5.col-xs-12.offset-md-1.form-group(style={'margin-top': '3%'})
               p
                 b Nombre de Contacto:
                 input.form-control(type="text")
@@ -102,11 +105,20 @@ mixin generalInfo()
               p
                 b Usuario de Skype:
                 input.form-control(type="text")
+            div.col-md-6.col-xs-12(style={'margin-top': '3%'})
               p
                 b Informacion adicional:
+                br
                 textarea#textareaDefault.form-control(rows='5', placeholder="Comentarios", style={'margin-bottom': '1%'})
-            div.col-md-6.col-xs-12
-              h3(style={'margin-top': '2%', 'margin-bottom': '5%'}) Datos de Facturación
+                div(style={float : 'right'})
+                  button.btn.btn-primary(type="submit") Guardar
+                  button.btn.btn-primary(type="submit") Cancelar
+        div#exampleIconifiedTabsThree.tab-pane(role='tabpanel', aria-expanded='false')
+          div.row
+            div.col-xs-12.col-md-12
+              h1 Datos de Facturación
+            div.col-md-5.col-xs-12.offset-md-1
+              h3(style={'margin-top': '2%', 'margin-bottom': '5%'})
               p
                 b Razón Social:
                 input.form-control(type="text")
@@ -125,6 +137,8 @@ mixin generalInfo()
               p
                 b Orden de Compra/No. de Contrato: 
                 input.form-control(type="text")
+            div.col-md-6.col-xs-12
+              h3(style={'margin-top': '2%', 'margin-bottom': '5%'})
               p
                 b Fecha de orden de compra/contrato: 
                 div.input-group(style={'margin-bottom': '1%'})
@@ -146,64 +160,37 @@ mixin generalInfo()
                 div(style={float : 'right'})
                   button.btn.btn-primary(type="submit") Guardar
                   button.btn.btn-primary(type="submit") Cancelar
-        div#exampleIconifiedTabsThree.tab-pane(role='tabpanel', aria-expanded='false')
+        div#exampleIconifiedTabsFour.tab-pane(role='tabpanel', aria-expanded='false')
           div.row
             div.col-md-12.col-xs-12
               h1 Equipo de Trabajo
-            div.col-md-12.form-group
-              div.form-group
-                div.input-search
-                  button.input-search-btn(type='submit')
-                    i.icon.md-search(aria-hidden='true')
-                  input.form-control(type='text', name='', placeholder='Buscar...')
-            div.col-md-12
-              table.table.table-hover(style={ 'padding-bottom': '5%' })
-                thead
-                  tr
-                    th.w-50 #
-                    th Nombre Completo
-                    th Puesto
-                    th.w-200 Acciones
-                tbody.table-section(data-plugin='tableSection')
-                  tr
-                    td.text-center 1001
-                    td.font-weight-medium Bryan Adams
-                    td(style={'font-weight': 'bold'}) Líder del proyecto
-                    td.hidden-sm-down
-                      div.btn-group(role='group')
-                        button#exampleIconDropdown1.btn.btn-primary.dropdown-toggle.waves-effect.waves-classic(type='button', data-toggle='dropdown', aria-expanded='false')
-                          i.icon.md-accounts-list-alt(aria-hidden='true')
-                        div.dropdown-menu(aria-labelledby='exampleIconDropdown1', role='menu')
-                          a.dropdown-item.disabled(href='#', role='menuitem') Líder de proyecto
-                          a.dropdown-item(href='#', role='menuitem') Ingeniero
-                          a.dropdown-item(href='#', role='menuitem') Miembro
-                        button.btn.btn-danger.waves-effect.waves-classic(type='button') #[i.icon.md-delete]
-                  tr
-                    td.text-center 1002
-                    td.font-weight-medium Fernando Villers
-                    td Ingeniero
-                    td.hidden-sm-down
-                      div.btn-group(role='group')
-                        button#exampleIconDropdown1.btn.btn-primary.dropdown-toggle.waves-effect.waves-classic(type='button', data-toggle='dropdown', aria-expanded='false')
-                          i.icon.md-accounts-list-alt(aria-hidden='true')
-                        div.dropdown-menu(aria-labelledby='exampleIconDropdown1', role='menu')
-                          a.dropdown-item(href='#', role='menuitem') Líder de proyecto
-                          a.dropdown-item.disabled(href='#', role='menuitem') Ingeniero
-                          a.dropdown-item(href='#', role='menuitem') Miembro
-                        button.btn.btn-danger.waves-effect.waves-classic(type='button') #[i.icon.md-delete]
-                  tr
-                    td.text-center 1042
-                    td.font-weight-medium Diana Carolina Dueñas
-                    td Miembro
-                    td.hidden-sm-down
-                      div.btn-group(role='group')
-                        button#exampleIconDropdown1.btn.btn-primary.dropdown-toggle.waves-effect.waves-classic(type='button', data-toggle='dropdown', aria-expanded='false')
-                          i.icon.md-accounts-list-alt(aria-hidden='true')
-                        div.dropdown-menu(aria-labelledby='exampleIconDropdown1', role='menu')
-                          a.dropdown-item(href='#', role='menuitem') Líder de proyecto
-                          a.dropdown-item(href='#', role='menuitem') Ingeniero
-                          a.dropdown-item.disabled(href='#', role='menuitem') Miembro
-                        button.btn.btn-danger.waves-effect.waves-classic(type='button') #[i.icon.md-delete]
+            div.col-md-12.col-xs-12.offset-md-1
+              div.row
+                div.col-md-10
+                  div.form-group
+                    div.input-search
+                      button.input-search-btn(type='submit')
+                        i.icon.md-search(aria-hidden='true')
+                      input.form-control(type='text', name='', placeholder='Buscar...')
+                  table.table.table-hover(style={ 'padding-bottom': '5%' })
+                    thead
+                      tr
+                        th.w-50.text-center #
+                        th(style={'font-weight': 'bold'}) Nombre Completo
+                        th(style={'font-weight': 'bold'}) Puesto
+                    tbody.table-section(data-plugin='tableSection')
+                      tr
+                        td.text-center 1001
+                        td.font-weight-medium Bryan Adams
+                        td(style={'font-weight': 'bold'}) Líder del proyecto
+                      tr
+                        td.text-center 1002
+                        td.font-weight-medium Fernando Villers
+                        td Ingeniero
+                      tr
+                        td.text-center 1042
+                        td.font-weight-medium Diana Carolina Dueñas
+                        td Miembro
 
 mixin graphNumbers()
   div.cardSpecial(style={'margin-top':'5%', 'margin-bottom': '5%' ,'box-shadow': '0px 1px 5px #888888', 'background-color': 'none !important'})
@@ -222,22 +209,6 @@ mixin graphNumbers()
           div.row
             div.col-xs-12.col-md-12
               h1 Gastos
-              div(style={float : 'right'})
-                button(type='button', data-toggle='modal', data-target='#myModal').btn.btn-primary.waves-effect.waves-classic Agregar Gasto
-
-            //div.col-md-5.col-xs-12.offset-md-1(style={'margin-top': '3%'})
-              //p
-                //b Valor Presupuestado:
-                //|  $ 5000
-              //p
-                //b Gasto Total:
-                //|  $ 3500
-              //p
-                //b Porcentaje Utilizado:
-                //|  75%
-              //p
-                //b Prcentaje Disponible:
-                //|  25%
             div.col-md-12.col-xs-12(style={'margin-top': '3%'})
               div.example
                 div#exampleSimpleLine.ct-chart.ct-perfect-four
@@ -529,50 +500,6 @@ mixin graphNumbers()
                       foreignobject(style='overflow: visible;', y='-15', x='10', height='30', width='50')
                         span.ct-label.ct-vertical.ct-start(style='height: 30px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 125.00%
 
-mixin modalExpenses()
-  div#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true', style={'z-index': '20001'})
-    div.modal-dialog(role='document', style={'width' : '800px !important', 'max-width' : '800px !important' })
-      div.modal-content
-        div.modal-header
-          h5#exampleModalLabel.modal-title Registrar Gasto
-          button.close(type='button', data-dismiss='modal', aria-label='Close')
-            span(aria-hidden='true') ×
-        div.modal-body
-          form(action="#" method="method")
-            div.row.card-block
-              div.col-xs-12.col-md-12
-              div.col-md-12.col-xs-12
-                div.form-group
-                  label(for='conceptoGeneral') Concepto General
-                  select.form-control(style={'margin-bottom': '1%'})
-                    option(value="UV") Unidad de Verificación (Auditorias) 
-                    option(value="PA") Proyectos Ambientales
-                    option(value="PE") Proyectos Especiales
-                    option(value="SU") Suelo
-                    option(value="IN") Inogen
-                    option(value="OVV") Ovvalo
-                div.form-group
-                  label(for='conceptoEspecifico') Concepto Especifico
-                  select.form-control(style={'margin-bottom': '1%'})
-                    option(value="UV") Unidad de Verificación (Auditorias) 
-                    option(value="PA") Proyectos Ambientales
-                    option(value="PE") Proyectos Especiales
-                    option(value="SU") Suelo
-                    option(value="IN") Inogen
-                    option(value="OVV") Ovvalo
-                div.form-group
-                  label(for='detalle') Detalle
-                  input.form-control(type='text', name='detalle' placeholder='')
-                div.form-group
-                  label(for='importe') Importe
-                  input.form-control(type='number', name='importe' placeholder='$ 525.00')
-                div.form-group
-                  label(for='iva') I.V.A
-                  input.form-control(type='number', name='iva' placeholder='$ 25.00')
-        div.modal-footer
-          button.btn.btn-secondary(type='button', data-dismiss='modal') Cerrar
-          button.btn.btn-primary(type='button') Guardar Cambios
-
 
 block content
   include ./navbar.jade
@@ -582,7 +509,7 @@ block content
       div.col-md-10.offset-md-1.col-xs-12
         +generalInfo()
         +graphNumbers()
-  +modalExpenses()
+  
   script.
     $( function() {
     $( "#fechaInicio" ).datepicker();
@@ -590,7 +517,3 @@ block content
     $( "#fechaCompra" ).datepicker();
     $( "#fechaFactura" ).datepicker();
     } );
-  script.
-    $('#myModal').on('shown.bs.modal', function () { 
-      $('#myInput').focus()
-    });

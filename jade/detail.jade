@@ -202,6 +202,8 @@ mixin graphNumbers()
           div.row
             div.col-xs-12.col-md-12
               h1 Gastos
+              div(style={float : 'right'})
+                button(type='button', data-toggle='modal', data-target='#myModal').btn.btn-primary.waves-effect.waves-classic Agregar Gasto
             div.col-md-12.col-xs-12(style={'margin-top': '3%'})
               div.example
                 div#exampleSimpleLine.ct-chart.ct-perfect-four
@@ -492,6 +494,51 @@ mixin graphNumbers()
                         span.ct-label.ct-vertical.ct-start(style='height: 46px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 100.00%
                       foreignobject(style='overflow: visible;', y='-15', x='10', height='30', width='50')
                         span.ct-label.ct-vertical.ct-start(style='height: 30px; width: 50px', xmlns='http://www.w3.org/2000/xmlns/') 125.00%
+
+mixin modalExpenses()
+  div#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true', style={'z-index': '20001'})
+    div.modal-dialog(role='document', style={'width' : '800px !important', 'max-width' : '800px !important' })
+      div.modal-content
+        div.modal-header
+          h5#exampleModalLabel.modal-title Registrar Gasto
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+        div.modal-body
+          form(action="#" method="method")
+            div.row.card-block
+              div.col-xs-12.col-md-12
+              div.col-md-12.col-xs-12
+                div.form-group
+                  label(for='conceptoGeneral') Concepto General
+                  select.form-control(style={'margin-bottom': '1%'})
+                    option(value="UV") Unidad de Verificación (Auditorias) 
+                    option(value="PA") Proyectos Ambientales
+                    option(value="PE") Proyectos Especiales
+                    option(value="SU") Suelo
+                    option(value="IN") Inogen
+                    option(value="OVV") Ovvalo
+                div.form-group
+                  label(for='conceptoEspecifico') Concepto Especifico
+                  select.form-control(style={'margin-bottom': '1%'})
+                    option(value="UV") Unidad de Verificación (Auditorias) 
+                    option(value="PA") Proyectos Ambientales
+                    option(value="PE") Proyectos Especiales
+                    option(value="SU") Suelo
+                    option(value="IN") Inogen
+                    option(value="OVV") Ovvalo
+                div.form-group
+                  label(for='detalle') Detalle
+                  input.form-control(type='text', name='detalle' placeholder='')
+                div.form-group
+                  label(for='importe') Importe
+                  input.form-control(type='number', name='importe' placeholder='$ 525.00')
+                div.form-group
+                  label(for='iva') I.V.A
+                  input.form-control(type='number', name='iva' placeholder='$ 25.00')
+        div.modal-footer
+          button.btn.btn-secondary(type='button', data-dismiss='modal') Cerrar
+          button.btn.btn-primary(type='button') Guardar Cambios
+
       
 block content
   include ./navbar.jade
@@ -501,3 +548,4 @@ block content
       div.col-md-10.offset-md-1.col-xs-12
         +generalInfo()
         +graphNumbers()
+    +modalExpenses()
