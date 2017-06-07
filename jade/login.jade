@@ -9,7 +9,7 @@ block additional_scripts
   script(src="global/js/Plugin/material.js")
   script(src='js/vendor.js', defer)
   script(src='js/login.js', defer)
-
+   
 block content
   main
     div(style={ 'animation-duration': '800ms', opacity: '1'}).animsition.page-login-v2.layout-full.page-dark
@@ -30,17 +30,19 @@ block content
             p Ingrese sus credenciales para continuar.
             div.alert.alert-danger(v-if='message') #[p {{ message }}]
             div(style={'width': '375px'})
-              div.form-group.form-material.floating(data-plugin='formMaterial')
-                input#inputEmail.form-control.empty(type='text', name='username', v-model='form.username')
-                label.floating-label(for='inputEmail') No. empleado
-              div.form-group.form-material.floating(data-plugin='formMaterial')
-                input#inputPassword.form-control.empty(type='password', name='password', v-model='form.password')
-                label.floating-label(for='inputPassword') Password
+            form
+              div.form-group
+                label(for='inputMail') N° de Empleado
+                input#exampleInputEmail1.form-control(type='text', name='username', v-model='form.username', aria-describedby='emailHelp')
+                small#emailHelp.form-text.text-muted Tu ID de empleado es único.
+              div.form-group
+                label(for='inputPassword') Password
+                input#exampleInputPassword1.form-control(name='password', type='password', v-model='form.password')
               div.form-group.clearfix
                 div.checkbox-custom.checkbox-inline.checkbox-primary.float-left
                   input#remember(type='checkbox', name='remember', v-model='form.remember')
                   label(for='inputCheckbox') Recordarme
-              button.btn.btn-primary.btn-block(v-bind:disabled='!valid(form)' v-on:click='login(form)') Iniciar sesión
+              button.btn.btn-primary.btn-block(type='submit', v-bind:disabled='!valid(form)', v-on:click='login(form)') Iniciar Sesión
             footer.page-copyright
               p Asora
               p © 2017. All RIGHTS RESERVED.

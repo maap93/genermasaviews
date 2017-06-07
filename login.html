@@ -54,14 +54,15 @@
               <div class="alert alert-danger" v-if="message">
                 <p>{{ message }}</p>
               </div>
-              <div style="width:375px;">
-                <div class="form-group form-material floating" data-plugin="formMaterial">
-                  <input class="form-control empty" id="inputEmail" type="text" name="username" v-model="form.username">
-                  <label class="floating-label" for="inputEmail">No. empleado</label>
+              <div style="width:375px;"></div>
+              <form>
+                <div class="form-group">
+                  <label for="inputMail">N° de Empleado</label>
+                  <input class="form-control" id="exampleInputEmail1" type="text" name="username" v-model="form.username" aria-describedby="emailHelp"><small class="form-text text-muted" id="emailHelp">Tu ID de empleado es único.</small>
                 </div>
-                <div class="form-group form-material floating" data-plugin="formMaterial">
-                  <input class="form-control empty" id="inputPassword" type="password" name="password" v-model="form.password">
-                  <label class="floating-label" for="inputPassword">Password</label>
+                <div class="form-group">
+                  <label for="inputPassword">Password</label>
+                  <input class="form-control" id="exampleInputPassword1" name="password" type="password" v-model="form.password">
                 </div>
                 <div class="form-group clearfix">
                   <div class="checkbox-custom checkbox-inline checkbox-primary float-left">
@@ -69,8 +70,8 @@
                     <label for="inputCheckbox">Recordarme</label>
                   </div>
                 </div>
-                <button class="btn btn-primary btn-block" v-bind:disabled="!valid(form)" v-on:click="login(form)">Iniciar sesión</button>
-              </div>
+                <button class="btn btn-primary btn-block" type="submit" v-bind:disabled="!valid(form)" v-on:click="login(form)">Iniciar Sesión</button>
+              </form>
               <footer class="page-copyright">
                 <p>Asora</p>
                 <p>© 2017. All RIGHTS RESERVED.</p>
