@@ -9,6 +9,7 @@ block additional_styles
 block additional_scripts
   script(src='global/vendor/chartist/chartist.js')
   script(src='global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js')
+  script(src='global/js/Plugin/input-group-file.js')
 
 mixin header(projectTitle, projectType)
   div.jumbotron(style={ margin:' 0 -0.9375rem'} )
@@ -526,6 +527,22 @@ mixin modalExpenses()
                     option(value="SU") Suelo
                     option(value="IN") Inogen
                     option(value="OVV") Ovvalo
+                div.form-group
+                  label(for='conceptoEspecifico') Anexar Factura
+                  div.input-group.input-group-file(data-plugin='inputGroupFile')
+                    input.form-control(type='text', readonly)
+                    span.input-group-btn
+                      span.btn.btn-primary.btn-file.waves-effect.waves-classic
+                        i.icon.md-upload(aria-hidden='true')
+                        input(type='file', name, multiple)
+                div.form-group
+                  label(for='conceptoEspecifico') Anexar XML
+                  div.input-group.input-group-file(data-plugin='inputGroupFile')
+                    input.form-control(type='text', readonly)
+                    span.input-group-btn
+                      span.btn.btn-primary.btn-file.waves-effect.waves-classic
+                        i.icon.md-upload(aria-hidden='true')
+                        input(type='file', name, multiple)
                 div.form-group
                   label(for='detalle') Detalle
                   input.form-control(type='text', name='detalle' placeholder='')
